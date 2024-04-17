@@ -13,4 +13,35 @@ There was an issue in the data that the variable Sack_yards was not scraped corr
 Then the fixed dataset was exported to a csv file to merge with the basic statistics dataset later. 
 
 ### NOTES:
+In passing data, Columns are again messed up. 
+Games_Played = Games_Played
+Attempts = Attempts
+Completions = Completions
+Completions_Percentage = Completion_Percentage
+Yards (yards gained) = Yards (Yards gained)
+Average = Average (Yards gained per pass attempt)
+Long = Sum of career longest passes
+TDs  = TDs
+INTs = INTs
+First_Downs = First_Downs
+First_Down_Percentage  = First_Down_Percentage (first downs/attempts)
+
+Passes_Over_Twenty_Yards = unknown. Does not match consistently against any information I can find. The scraping code also doesnt provide any insight to what this number is either. Given that I cannot verify the validity of this variabale and considering that the following variable is incorrectly identified, I am removing this variable from the analysis
+
+Passes_Over_Forty_Yards = to remove
+
+Sacks = Passes_Over_forty_yards value
+
+Sack_Yards = Sacks value
+
+Passer_rating = Sack_Yards value
+
+Games_Played is repeated in many datasets so when merging I will need to have a check for if it is already included in the merged dataset then dont add it again
+
+
+find fumbles per possession by (fumbles / (rush attempt + receptions) within each player_id
+
+also processing active players with functions
+
+
 
