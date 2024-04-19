@@ -1,15 +1,25 @@
 
+
 library(dplyr)
 library(purrr)
+library(tidyr)
+library(tibble)
 
 ## Function to filter out player who played before 1980 and players who no single year data (aka only have one row of data) from the dataset, also filters to only focus on career stats (Year == 'TOTAL'). 
 allstatsfilter <- function(playersdataframe){
+  # replace total with 9999 in Year column
+  playersdataframe$Year[playersdataframe$Year == "TOTAL"] <- 9999
+
+  # Convert Year to integer since all whole numbers
+  playersdataframe$Year <- as.integer(playersdataframe$Year)
+
+
   # Identify player_ids with any year less than 1980
   players_to_remove <- playersdataframe %>%
     filter(Year < 1980) %>%
     pull(Player_Id) %>%
     unique()
-
+  
   # Remove these player_ids from the dataset
   playersdataframe <- playersdataframe %>%
     filter(!Player_Id %in% players_to_remove)
@@ -25,14 +35,16 @@ allstatsfilter <- function(playersdataframe){
   playersdataframe <- subset(playersdataframe, Player_Id %in% multi_row_players)
 
   # Subset to only Career Stats
-  playersdataframe <- subset(playersdataframe, Year == 'TOTAL')
+  playersdataframe <- subset(playersdataframe, Year == 9999)
+
+  playersdataframe$Year[playersdataframe$Year == 9999] <- "Total Career"
 
   return(playersdataframe)
 }
 ## function to fix the data for the defensive stats
-process_defensive_data <- function(PlayerDefensivedata) {
+process_defensive_data <- function(PlayerDefensivedataframe) {
 
-  PlayerDefensivedata <- allstatsfilter(PlayerDefensivedata)
+  PlayerDefensivedata <- allstatsfilter(PlayerDefensivedataframe)
 # Fixing columns and making new empty but correct dimension data frame
 
   PlayerDefensivedataFixed <- data.frame(
@@ -44,7 +56,7 @@ process_defensive_data <- function(PlayerDefensivedata) {
     Safeties = rep(0, nrow(PlayerDefensivedata)),
     Passes_Defended = rep(0, nrow(PlayerDefensivedata)),
     Interceptions = rep(0, nrow(PlayerDefensivedata)),
-    TDs = rep(0, nrow(PlayerDefensivedata)),
+    def_TDs = rep(0, nrow(PlayerDefensivedata)),
     INT_Yards = rep(0, nrow(PlayerDefensivedata)),
     AverageYrdperINT = rep(0, nrow(PlayerDefensivedata)),
     Tot_CareerHighINTReturn = rep(0, nrow(PlayerDefensivedata)),
@@ -55,7 +67,6 @@ process_defensive_data <- function(PlayerDefensivedata) {
   # Assign Player_Id column
   PlayerDefensivedataFixed$Player_Id <- as.character(PlayerDefensivedata$Player_Id)
   ## Year not included since it is already filtered to only include 'TOTAL'
-
   #removed Team since not needed
   PlayerDefensivedataFixed$Games_Played <- as.integer(PlayerDefensivedata$Games_Played)
 
@@ -84,9 +95,9 @@ process_defensive_data <- function(PlayerDefensivedata) {
   return(PlayerDefensivedataFixed)
 }
 ## function to fix the data for the fumbles stats
-process_fumbles_data <- function(Playerfumblesdata) {
+process_fumbles_data <- function(Playerfumblesdataframe) {
 
-  Playerfumblesdata <- allstatsfilter(Playerfumblesdata)
+  Playerfumblesdata <- allstatsfilter(Playerfumblesdataframe)
 
 #This data is accurate the way it is, just need to remove the team column and year column since it is already filtered to only include 'TOTAL'
 
@@ -116,31 +127,39 @@ PlayerFumblesFixed <- data.frame(
 
   PlayerFumblesFixed$Opposing_Recovery <- as.integer(Playerfumblesdata$Opposing_Recovery)
 
-  PlayerFumblesFixed$Fumbles_TD <- as.integer(Playerfumblesdata$TDs) # nolint
+  PlayerFumblesFixed$Fumbles_TD <- as.integer(Playerfumblesdata$TDs) 
 
   return(PlayerFumblesFixed)
 }
 
 process_basicStats_data <- function(PlayerbasicStatsdata){
-  PlayerbasicstatFixed <- subset(PlayerbasicStatsdata, !apply(PlayerbasicStatsdata == "--", 1, any))
+  # Replace missing values in Height and Weight columns
+  PlayerbasicStatsdata <- PlayerbasicStatsdata %>%
+    mutate(Height = ifelse(Height == "--", "0-0", Height),
+           Weight = ifelse(Weight %in% c("0", "--", "-1"), 0, Weight))
 
+  class(PlayerbasicStatsdata$Height)
+  class(PlayerbasicStatsdata$Weight)
   # Split the string on "-", convert to numeric, multiply and add
-  PlayerbasicstatFixed$Height <- sapply(strsplit(PlayerbasicstatFixed$Height, "-"), function(x) {
+  PlayerbasicStatsdata$Height <- sapply(strsplit(as.character(PlayerbasicStatsdata$Height), "-"), function(x) {
     as.numeric(x[1]) * 12 + as.numeric(x[2])
   })
+  
+  # Convert Weight to numeric
+  PlayerbasicStatsdata$Weight <- as.numeric(PlayerbasicStatsdata$Weight)
 
    # Check if the Hall_Of_Fame column exists, and add it if it doesn't
-  if (!"Hall_Of_Fame" %in% names(PlayerbasicstatFixed)) {
-    PlayerbasicstatFixed <- PlayerbasicstatFixed %>%
+  if (!"Hall_Of_Fame" %in% names(PlayerbasicStatsdata)) {
+    PlayerbasicStatsdata <- PlayerbasicStatsdata %>%
       mutate(Hall_Of_Fame = "Not Eligible")
   }
 
   # Only include the specified columns in the returned dataframe
-  PlayerbasicstatFixed <- PlayerbasicstatFixed %>%
+  PlayerbasicStatsdata <- PlayerbasicStatsdata %>%
     select(Player_Id, Position, Height, Weight, College, Hall_Of_Fame)
 
   # Change the classes of the specified columns
-  PlayerbasicstatFixed <- PlayerbasicstatFixed %>%
+  PlayerbasicstatFixed <- PlayerbasicStatsdata %>%
     mutate_at(vars(Player_Id, College), as.character) %>%
     mutate_at(vars(Position, Hall_Of_Fame), as.factor) %>%
     mutate_at(vars(Height, Weight), as.integer)
@@ -166,7 +185,7 @@ process_passing_data <- function(PlayerPassingdata){
     First_downs_per_attempt_percentage = rep(0, nrow(PlayerPassingdata)),
     Been_Sacked = rep(0, nrow(PlayerPassingdata)),
     Sack_Yards = rep(0, nrow(PlayerPassingdata)),
-    Sack_Percentage = rep(0, nrow(PlayerPassingdata)),
+    Sacked_per_game = rep(0, nrow(PlayerPassingdata)),
     Passer_Rating = rep(0, nrow(PlayerPassingdata)),
     stringsAsFactors = FALSE
   )
@@ -199,10 +218,9 @@ process_passing_data <- function(PlayerPassingdata){
 
   PlayerPassingFixed$Sack_Yards <- as.integer(PlayerPassingdata$Sacks)
 
-  PlayerPassingFixed$Sack_Percentage <- with(PlayerPassingdata, (as.numeric(PlayerPassingdata$Passes_Over_Forty_Yards) / (as.numeric(PlayerPassingdata$Attempts) + as.numeric(PlayerPassingdata$Passes_Over_Forty_Yards)))*100) # nolint
+  PlayerPassingFixed$Sacked_per_game <- with(PlayerPassingdata, (as.numeric(PlayerPassingdata$Passes_Over_Forty_Yards) / as.numeric(PlayerPassingdata$Games_Played))) # nolint
 
-  PlayerPassingFixed$Passer_Rating <- as.numeric(PlayerPassingdata$Sack_Yards) # nolint
-
+  PlayerPassingFixed$Passer_Rating <- as.numeric(PlayerPassingdata$Sack_Yards) 
 
   return(PlayerPassingFixed)
 }
@@ -304,7 +322,8 @@ process_rushing_data <- function(PlayerRushingdata){
 
 merge_Active_Retired_Player_Data <- function(retiredPlayerData, activePlayerData) {
   unique_ids <- unique(c(retiredPlayerData$Player_Id, activePlayerData$Player_Id))
-
+  #print(unique_ids)
+  #print(length(unique_ids))
   # Iterate over the unique Player_Id
   merged_data <- map_dfr(unique_ids, function(id) {
     retired_data <- retiredPlayerData %>% filter(Player_Id == id)
@@ -312,7 +331,14 @@ merge_Active_Retired_Player_Data <- function(retiredPlayerData, activePlayerData
 
     if(nrow(retired_data) > 0 && nrow(active_data) > 0) {
       if(!all(retired_data == active_data)) {
-        stop(paste("Error: Different values for Player_Id", id))
+        if(!all(retired_data$Position == active_data$Position)) {
+          print(paste("Different Position values for Player_Id", id))
+          correct_position <- readline(prompt="Enter the correct Position: ")
+          retired_data$Position <- correct_position
+          active_data$Position <- correct_position
+        } else {
+          stop(paste("Error: Different values for Player_Id", id))
+        }
       }
       return(retired_data)
     } else if(nrow(retired_data) > 0) {
@@ -324,79 +350,189 @@ merge_Active_Retired_Player_Data <- function(retiredPlayerData, activePlayerData
 
   return(merged_data)
 }
+
+merge_dataframes <- function(positional_dataframes) {
+  # Use Reduce to iteratively merge all dataframes
+  merged_data_positional <- Reduce(function(x, y) merge(x, y, by = c("Player_Id", "Games_Played"), all = TRUE), positional_dataframes)
+
+  # Replace NAs with 0
+  merged_data_positional[is.na(merged_data_positional)] <- 0
+
+  return(merged_data_positional)
+}
+
+
 # Data Load
 ## Retired Player Data
-retiredFumblesdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Fumbles_Stats.csv")
 retiredPlayerDefensivedataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Defense_Stats.csv")
-retiredbasicstat <- read.csv("E:\\R_Code\\NFL Data\\Retired_Player_Basic_Stats (1).csv") 
+#View(retiredPlayerDefensivedataframe)
+retiredFumblesdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Fumbles_Stats.csv")
+#View(retiredFumblesdataframe)
 retiredPassingdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Passing_Stats.csv")
+#View(retiredPassingdataframe)
 retiredReceivingdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Receiving_Stats.csv")
+#View(retiredReceivingdataframe)
 retiredRushingdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Rushing_Stats.csv")
+#View(retiredRushingdataframe)
+retiredbasicstat <- read.csv("E:\\R_Code\\NFL Data\\Retired_Player_Basic_Stats (1).csv") 
+View(retiredbasicstat)
 
 ## Active Player Data
 activedefensivedataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Defense_Stats.csv")
+#View(activedefensivedataframe)
 activeFumblesdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Fumbles_Stats.csv")
-activebasicstat <- read.csv("E:\\R_Code\\NFL Data\\Active_Player_Basic_Stats.csv")
+#View(activeFumblesdataframe)
 activePassingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Passing_Stats.csv")
-activeReceivingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Receiving_Stats.csv")
+#View(activePassingdataframe)
+activeReceivingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Receiving_Stats.csv")  
+#View(activeReceivingdataframe)
 activeRushingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Rushing_Stats.csv")
+#View(activeRushingdataframe)
+activebasicstat <- read.csv("E:\\R_Code\\NFL Data\\Active_Player_Basic_Stats.csv") 
+View(activebasicstat)
 
 # Data Cleaning
 ### Function Call
 
 #Defensive Data
-retiredPlayerDefensivedataFixed <- process_defensive_data(PlayerDefensivedata = retiredPlayerDefensivedataframe)
-activePlayerDefensivedataFixed <- process_defensive_data(PlayerDefensivedata = activedefensivedataframe)
+retiredPlayerDefensivedataFixed <- process_defensive_data(PlayerDefensivedataframe = retiredPlayerDefensivedataframe)
+activePlayerDefensivedataFixed <- process_defensive_data(PlayerDefensivedataframe = activedefensivedataframe)
+View(activePlayerDefensivedataFixed)
+
+totaldefRows <- nrow(retiredPlayerDefensivedataFixed) + nrow(activePlayerDefensivedataFixed)
+print(totaldefRows)
+ids_in_both_def <- intersect(retiredPlayerDefensivedataFixed$Player_Id, activePlayerDefensivedataFixed$Player_Id)
+#print(ids_in_both_def)
 
 #Fumbles Data
 retiredFumblesPlayerFixed <- process_fumbles_data(Playerfumblesdata = retiredFumblesdataframe)
 activeFumblesPlayerFixed <- process_fumbles_data(Playerfumblesdata = activeFumblesdataframe)
 
+totalfumblesRows <- nrow(retiredFumblesPlayerFixed) + nrow(activeFumblesPlayerFixed)
+ids_in_both_fumbles <- intersect(retiredFumblesPlayerFixed$Player_Id, activeFumblesPlayerFixed$Player_Id)
+
 #Passing Data
 retiredPassingdataFixed <- process_passing_data(PlayerPassingdata = retiredPassingdataframe)
 activePassingdataFixed <- process_passing_data(PlayerPassingdata = activePassingdataframe)
+
+totalpassingRows <- nrow(retiredPassingdataFixed) + nrow(activePassingdataFixed)
+ids_in_both_passing <- intersect(retiredPassingdataFixed$Player_Id, activePassingdataFixed$Player_Id)
 
 #Receiving Data
 retiredReceivingdataFixed <- process_receiving_data(PlayerReceivingdata = retiredReceivingdataframe)
 activeReceivingdataFixed <- process_receiving_data(PlayerReceivingdata = activeReceivingdataframe)
 
+totalreceivingRows <- nrow(retiredReceivingdataFixed) + nrow(activeReceivingdataFixed)
+ids_in_both_receiving <- intersect(retiredReceivingdataFixed$Player_Id, activeReceivingdataFixed$Player_Id)
+
 #Rushing Data
 retiredRushingdataFixed <- process_rushing_data(PlayerRushingdata = retiredRushingdataframe)
 activeRushingdataFixed <- process_rushing_data(PlayerRushingdata = activeRushingdataframe)
 
+totalrushingRows <- nrow(retiredRushingdataFixed) + nrow(activeRushingdataFixed)
+ids_in_both_rushing <- intersect(retiredRushingdataFixed$Player_Id, activeRushingdataFixed$Player_Id)
+
 #Basic Stats Data
 retiredbasicstatFixed <- process_basicStats_data(PlayerbasicStatsdata = retiredbasicstat)
 activebasicstatFixed <- process_basicStats_data(PlayerbasicStatsdata = activebasicstat)
-activebasicstatFixed$Hall_Of_Fame <- rep("Not Eligible", nrow(activebasicstatFixed)) # nolint
+activebasicstatFixed$Hall_Of_Fame <- rep("False", nrow(activebasicstatFixed)) 
+
+totalbasicstatRows <- nrow(retiredbasicstatFixed) + nrow(activebasicstatFixed)
+ids_in_both_basicstat <- intersect(retiredbasicstatFixed$Player_Id, activebasicstatFixed$Player_Id)
+View(retiredbasicstatFixed)
+View(activebasicstatFixed)
 
 ## Data merge
+### NOTE: There are some players who might be missing height, weight, or position. This will need to be entered manually for those players what are included in the other dataframes.
+
 
 # Defensive Player Merge
 DefensivePlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = retiredPlayerDefensivedataFixed, activePlayerData = activePlayerDefensivedataFixed)
+print(totaldefRows)
+print(length(ids_in_both_def))
+print(nrow(DefensivePlayerData))
+print(totaldefRows - length(ids_in_both_def))
 
 # Fumbles Player Merge
 FumblesPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = retiredFumblesPlayerFixed, activePlayerData = activeFumblesPlayerFixed)
+print(totalfumblesRows)
+print(length(ids_in_both_fumbles))
+print(nrow(FumblesPlayerData))
+print(totalfumblesRows - length(ids_in_both_fumbles))
 
 # Passing Player Merge
 PassingPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = retiredPassingdataFixed, activePlayerData = activePassingdataFixed)
+print(totalpassingRows)
+print(length(ids_in_both_passing))
+print(nrow(PassingPlayerData))
 
 # Receiving Player Merge
 ReceivingPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = retiredReceivingdataFixed, activePlayerData = activeReceivingdataFixed)
+print(totalreceivingRows)
+print(length(ids_in_both_receiving))
+print(nrow(ReceivingPlayerData))
+print(totalreceivingRows - length(ids_in_both_receiving))
 
 # Rushing Player Merge
 RushingPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = retiredRushingdataFixed, activePlayerData = activeRushingdataFixed)
+print(totalrushingRows)
+print(length(ids_in_both_rushing))
+print(nrow(RushingPlayerData))
 
 # Basic Stats Player Merge
 BasicStatsPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = retiredbasicstatFixed, activePlayerData = activebasicstatFixed)
+print(totalbasicstatRows)
+print(length(ids_in_both_basicstat))
+print(nrow(BasicStatsPlayerData))
+
+View(BasicStatsPlayerData)
+
+print(nrow(DefensivePlayerData) + nrow(FumblesPlayerData) + nrow(PassingPlayerData) + nrow(Rece1ivingPlayerData) + nrow(RushingPlayerData))
+
+unique_ids_in_position_data <- unique(c(DefensivePlayerData$Player_Id, FumblesPlayerData$Player_Id, PassingPlayerData$Player_Id, ReceivingPlayerData$Player_Id, RushingPlayerData$Player_Id))
+
+print(length(unique_ids_in_position_data))
+View(unique_ids_in_position_data)
 
 
+#Note: combine all positional dataframes into one dataframe to be able to merge into basics stats dataframe.
+# List of dataframes
+position_dataframes <- list(DefensivePlayerData, FumblesPlayerData, PassingPlayerData, ReceivingPlayerData, RushingPlayerData)
 
+merged_positional_data <- merge_dataframes(positional_dataframes = position_dataframes)
+#View(merged_postional_data)
 
+merged_ids_not_in_basicstats <- setdiff(merged_positional_data$Player_Id, BasicStatsPlayerData$Player_Id)
+print(length(merged_ids_not_in_basicstats)) #0 so all players in positional dataframes are in basic stats dataframe
 
+# Filter BasicStatsPlayerData
+filtered_BasicStatsPlayerData <- BasicStatsPlayerData %>%
+  filter(Player_Id %in% merged_positional_data$Player_Id)
 
+## fixing empty heights and weights for players in the basic dataframe before the merge to limit potential issues with the merge.
 
+# Iterate over the rows of filtered_BasicStatsPlayerData
+for(i in 1:nrow(filtered_BasicStatsPlayerData)) {
+  # If Height or Weight is 0, ask for user input
+  while(filtered_BasicStatsPlayerData$Height[i] == 0 || filtered_BasicStatsPlayerData$Weight[i] == 0) {
+    print(paste("Incorrect Height or Weight for Player_Id", filtered_BasicStatsPlayerData$Player_Id[i]))
+    correct_height <- as.numeric(readline(prompt="Enter the correct Height: "))
+    correct_weight <- as.numeric(readline(prompt="Enter the correct Weight: "))
+    filtered_BasicStatsPlayerData$Height[i] <- correct_height
+    filtered_BasicStatsPlayerData$Weight[i] <- correct_weight
+  }
+}
 
+# Merge BasicStatsPlayerData with merged_positional_data
+merged_data_all <- merge(filtered_BasicStatsPlayerData, merged_positional_data, by = c("Player_Id"), all = TRUE)
+View(merged_data_all)
 
+# Write merged_data_all to a CSV file
+write.csv(merged_data_all, file = "merged_data_all.csv", row.names = FALSE)
+
+write.csv(merged_data_all, file = "E:\\R_Code\\NFL Data\\FixedDataCSVfiles\\merged_data_all.csv", row.names = FALSE)
+
+### The data has been cleaned and merged into one dataframe
 
 
 
@@ -408,3 +544,4 @@ BasicStatsPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = ret
     # if ID from kicking is not a K in basic stats then remove from kicking data.
   # however even with this some of the kicker data is not accurate even for the kicker position players.
   # Exclude for now but add later on my own time for experimentation beyond the scope of this project analysis. 
+
