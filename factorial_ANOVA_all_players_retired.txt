@@ -1,0 +1,1406 @@
+
+Factorial ANOVA for BMI accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1      4    3.96   0.227    0.634    
+Region                 6    850  141.64   8.133 8.64e-09 ***
+Hall_Of_Fame:Region    4     58   14.52   0.834    0.504    
+Residuals           9212 160434   17.42                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against BMI :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against BMI :
+                          diff        lwr         upr        p.adj
+Southwest-Midwest   -0.5297050 -0.9793031 -0.08010699 9.287300e-03
+West-Midwest        -0.6863804 -1.1077340 -0.26502689 3.254905e-05
+Southeast-Northeast -0.5579589 -1.0214927 -0.09442510 7.101354e-03
+Southwest-Northeast -0.8633892 -1.4065629 -0.32021544 5.751020e-05
+West-Northeast      -1.0200646 -1.5401012 -0.50002793 1.571983e-07
+West-Southeast      -0.4621057 -0.8345610 -0.08965035 4.758135e-03
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against BMI :
+                                      diff       lwr         upr        p.adj
+False:Southwest-False:Midwest   -0.5335043 -1.046900 -0.02010886 3.271335e-02
+False:West-False:Midwest        -0.6876368 -1.168418 -0.20685598 1.417324e-04
+False:Southeast-False:Northeast -0.5829932 -1.112755 -0.05323119 1.604683e-02
+False:Southwest-False:Northeast -0.8917432 -1.512423 -0.27106361 1.273917e-04
+False:West-False:Northeast      -1.0458757 -1.639861 -0.45189045 3.272237e-07
+False:West-False:Southeast      -0.4628825 -0.888165 -0.03759998 1.854580e-02
+
+Levene's test for BMI :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group   11  1.0871 0.3669
+      9212               
+
+Eta squared for BMI :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        2.356569e-05 2.369907e-05
+Region              5.267209e-03 5.269234e-03
+Hall_Of_Fame:Region 3.598922e-04 3.618068e-04
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.070851, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Total_Tackles accounting for interactions between HOF status and College Region:
+                      Df    Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    321342  321342  24.076 9.42e-07 ***
+Region                 6    334004   55667   4.171 0.000342 ***
+Hall_Of_Fame:Region    4    260545   65136   4.880 0.000626 ***
+Residuals           9212 122951570   13347                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Total_Tackles :
+               diff      lwr      upr        p.adj
+True-False 64.87218 38.95605 90.78831 9.418339e-07
+
+Significant Tukey's HSD results for Region against Total_Tackles :
+                         diff       lwr       upr       p.adj
+Southwest-Southeast -14.91119 -26.09893 -3.723450 0.001656125
+West-Southeast      -13.61495 -23.92578 -3.304121 0.001917247
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Total_Tackles :
+                                      diff         lwr         upr        p.adj
+True:Southeast-False:Midwest     101.57426   37.236198 165.9123280 1.081635e-05
+True:Southeast-False:Northeast   102.89220   37.833542 167.9508663 1.028422e-05
+True:Southeast-False:Southeast    97.17752   33.139643 161.2153963 3.225313e-05
+False:Southwest-False:Southeast  -15.10952  -27.894630  -2.3244093 5.725326e-03
+False:West-False:Southeast       -12.66676  -24.440019  -0.8934942 2.150018e-02
+False:Southwest-True:Southeast  -112.28704 -176.947757 -47.6263209 5.324906e-07
+False:West-True:Southeast       -109.84428 -174.312556 -45.3759962 1.017117e-06
+True:West-True:Southeast        -141.64324 -279.767238  -3.5192488 3.804805e-02
+True:Southwest-False:Southwest   124.40743    7.038441 241.7764232 2.585783e-02
+False:West-True:Southwest       -121.96467 -239.227753  -4.7015858 3.237731e-02
+
+Levene's test for Total_Tackles :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  6.2115 2.793e-10 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Total_Tackles :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.002537199 0.002549582
+Region              0.002696460 0.002709186
+Hall_Of_Fame:Region 0.002103416 0.002114604
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.33368, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Sacks accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value Pr(>F)    
+Hall_Of_Fame           1   55922   55922 381.020 <2e-16 ***
+Region                 6    2322     387   2.637 0.0148 *  
+Hall_Of_Fame:Region    4   12211    3053  20.800 <2e-16 ***
+Residuals           9212 1352034     147                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Sacks :
+               diff      lwr      upr p.adj
+True-False 27.06235 24.34468 29.78002     0
+
+Significant Tukey's HSD results for Region against Sacks :
+                    diff       lwr        upr     p.adj
+West-Southeast -1.248973 -2.330209 -0.1677379 0.0117649
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Sacks :
+                                        diff        lwr        upr        p.adj
+True:Midwest-False:International    20.72078   4.346680  37.094879 1.801601e-03
+True:Northeast-False:International  42.60714  24.595633  60.618652 0.000000e+00
+True:Southeast-False:International  34.60039  21.848689  47.352083 0.000000e+00
+True:Southwest-False:International  28.44805  12.073952  44.822152 5.237996e-07
+True:Midwest-False:Midwest          20.03956   7.750375  32.328740 4.143554e-06
+True:Northeast-False:Midwest        41.92592  27.527055  56.324787 0.000000e+00
+True:Southeast-False:Midwest        33.91916  27.172413  40.665916 0.000000e+00
+True:Southwest-False:Midwest        27.76683  15.477647  40.056013 0.000000e+00
+False:Northeast-True:Midwest       -20.19158 -32.522410  -7.860751 3.644387e-06
+True:Northeast-True:Midwest         21.88636   3.002831  40.769897 7.715427e-03
+False:Southeast-True:Midwest       -19.59131 -31.863242  -7.319383 7.828712e-06
+False:Southwest-True:Midwest       -19.89486 -32.202652  -7.587071 5.405901e-06
+False:West-True:Midwest            -20.58894 -32.885628  -8.292258 1.804743e-06
+True:West-True:Midwest             -22.56364 -40.320289  -4.806984 1.670194e-03
+True:Northeast-False:No College     32.25000  10.302190  54.197810 7.376979e-05
+True:Southeast-False:No College     24.24324   6.357560  42.128926 4.687330e-04
+True:Northeast-False:Northeast      42.07794  27.643517  56.512372 0.000000e+00
+True:Southeast-False:Northeast      34.07119  27.248871  40.893504 0.000000e+00
+True:Southwest-False:Northeast      27.91885  15.588024  40.249683 0.000000e+00
+False:Southeast-True:Northeast     -41.47768 -55.861820 -27.093533 0.000000e+00
+False:Southwest-True:Northeast     -41.78122 -56.195976 -27.366474 0.000000e+00
+False:West-True:Northeast          -42.47531 -56.880576 -28.070037 0.000000e+00
+True:West-True:Northeast           -44.45000 -63.726982 -25.173018 0.000000e+00
+True:Southeast-False:Southeast      33.47092  26.755647  40.186192 0.000000e+00
+True:Southwest-False:Southeast      27.31859  15.046656  39.590514 0.000000e+00
+False:Southwest-True:Southeast     -33.77447 -40.555054 -26.993882 0.000000e+00
+False:West-True:Southeast          -34.46855 -41.228956 -27.708143 0.000000e+00
+True:West-True:Southeast           -36.44324 -50.927488 -21.958999 0.000000e+00
+True:Southwest-False:Southwest      27.62213  15.314343  39.929924 0.000000e+00
+False:West-True:Southwest          -28.31622 -40.612900 -16.019531 0.000000e+00
+True:West-True:Southwest           -30.29091 -48.047561 -12.534257 9.772052e-07
+
+Levene's test for Sacks :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11   43.67 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Sacks :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.039088375 0.039500798
+Region              0.001632230 0.001714342
+Hall_Of_Fame:Region 0.008584372 0.008950864
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.37205, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Passes_Defended accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    5028    5028  36.126 1.92e-09 ***
+Region                 6    4072     679   4.876 5.53e-05 ***
+Hall_Of_Fame:Region    4    2793     698   5.016 0.000489 ***
+Residuals           9212 1282237     139                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Passes_Defended :
+              diff      lwr      upr       p.adj
+True-False 8.11503 5.468436 10.76162 1.88496e-09
+
+Significant Tukey's HSD results for Region against Passes_Defended :
+                         diff       lwr        upr        p.adj
+Southwest-Southeast -1.308413 -2.450922 -0.1659044 1.300467e-02
+West-Southeast      -1.688372 -2.741329 -0.6354148 4.711508e-05
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Passes_Defended :
+                                         diff         lwr        upr
+True:Southeast-False:International  15.198842   2.7806490 27.6170344
+True:Southeast-False:Midwest        13.205134   6.6348353 19.7754329
+True:Southeast-False:Northeast      13.202141   6.5582537 19.8460282
+True:Southeast-True:Northeast       16.270270   0.8391098 31.7014308
+True:Southeast-False:Southeast      12.307708   5.7680647 18.8473510
+False:West-False:Southeast          -1.578444  -2.7807467 -0.3761406
+False:Southwest-True:Southeast     -13.577651 -20.1808992 -6.9744020
+False:West-True:Southeast          -13.886151 -20.4697480 -7.3025549
+True:West-True:Southeast           -16.270270 -30.3756978 -2.1648427
+                                          p.adj
+True:Southeast-False:International 3.237078e-03
+True:Southeast-False:Midwest       1.470479e-09
+True:Southeast-False:Northeast     2.494679e-09
+True:Southeast-True:Northeast      2.756334e-02
+True:Southeast-False:Southeast     2.591178e-08
+False:West-False:Southeast         8.981512e-04
+False:Southwest-True:Southeast     4.775152e-10
+False:West-True:Southeast          1.103366e-10
+True:West-True:Southeast           8.286900e-03
+
+Levene's test for Passes_Defended :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  7.7681 1.513e-13 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Passes_Defended :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.003778377 0.003798938
+Region              0.003146842 0.003165976
+Hall_Of_Fame:Region 0.002158202 0.002173487
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.37703, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for def_TDs accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1     82   81.64 202.308  < 2e-16 ***
+Region                 6      8    1.38   3.414  0.00228 ** 
+Hall_Of_Fame:Region    4     24    5.99  14.836 4.35e-12 ***
+Residuals           9212   3717    0.40                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against def_TDs :
+              diff       lwr      upr p.adj
+True-False 1.03401 0.8915075 1.176513     0
+
+Significant Tukey's HSD results for Region against def_TDs :
+                      diff        lwr          upr      p.adj
+West-Southeast -0.06266769 -0.1193629 -0.005972482 0.01924883
+West-Southwest -0.07527336 -0.1464917 -0.004054974 0.03029629
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against def_TDs :
+                                         diff        lwr         upr
+True:Midwest-False:International    2.0000000  1.1414146  2.85858543
+True:Southeast-False:International  1.2162162  0.5475736  1.88485887
+True:Southwest-False:International  1.7272727  0.8686873  2.58585816
+True:Midwest-False:Midwest          1.8665243  1.2221339  2.51091473
+True:Southeast-False:Midwest        1.0827405  0.7289707  1.43651035
+True:Southwest-False:Midwest        1.5937970  0.9494066  2.23818746
+False:No College-True:Midwest      -1.6666667 -2.7481663 -0.58516707
+False:Northeast-True:Midwest       -1.8891455 -2.5357197 -1.24257129
+True:Northeast-True:Midwest        -1.7500000 -2.7401690 -0.75983098
+False:Southeast-True:Midwest       -1.8305602 -2.4740459 -1.18707445
+True:Southeast-True:Midwest        -0.7837838 -1.5155920 -0.05197556
+False:Southwest-True:Midwest       -1.8223844 -2.4677506 -1.17701828
+False:West-True:Midwest            -1.8876695 -2.5324533 -1.24288566
+True:West-True:Midwest             -1.7000000 -2.6310804 -0.76891962
+True:Southwest-False:No College     1.3939394  0.3124398  2.47543899
+True:Southeast-False:Northeast      1.1053617  0.7476296  1.46309383
+True:Southwest-False:Northeast      1.6164182  0.9698440  2.26299243
+True:Southeast-True:Northeast       0.9662162  0.1353439  1.79708850
+True:Southwest-True:Northeast       1.4772727  0.4871037  2.46744175
+True:Southeast-False:Southeast      1.0467764  0.6946572  1.39889561
+True:Southwest-False:Southeast      1.5578329  0.9143472  2.20131864
+False:Southwest-True:Southeast     -1.0386006 -1.3941446 -0.68305666
+False:West-True:Southeast          -1.1038857 -1.4583715 -0.74939984
+True:West-True:Southeast           -0.9162162 -1.6757060 -0.15672643
+True:Southwest-False:Southwest      1.5496572  0.9042910  2.19502330
+False:West-True:Southwest          -1.6149422 -2.2597260 -0.97015839
+True:West-True:Southwest           -1.4272727 -2.3583531 -0.49619235
+                                          p.adj
+True:Midwest-False:International   0.000000e+00
+True:Southeast-False:International 9.896629e-08
+True:Southwest-False:International 1.404713e-09
+True:Midwest-False:Midwest         0.000000e+00
+True:Southeast-False:Midwest       0.000000e+00
+True:Southwest-False:Midwest       0.000000e+00
+False:No College-True:Midwest      2.129308e-05
+False:Northeast-True:Midwest       0.000000e+00
+True:Northeast-True:Midwest        2.862509e-07
+False:Southeast-True:Midwest       0.000000e+00
+True:Southeast-True:Midwest        2.275757e-02
+False:Southwest-True:Midwest       0.000000e+00
+False:West-True:Midwest            0.000000e+00
+True:West-True:Midwest             8.565501e-08
+True:Southwest-False:No College    1.281569e-03
+True:Southeast-False:Northeast     0.000000e+00
+True:Southwest-False:Northeast     0.000000e+00
+True:Southeast-True:Northeast      7.337541e-03
+True:Southwest-True:Northeast      5.022950e-05
+True:Southeast-False:Southeast     0.000000e+00
+True:Southwest-False:Southeast     0.000000e+00
+False:Southwest-True:Southeast     0.000000e+00
+False:West-True:Southeast          0.000000e+00
+True:West-True:Southeast           4.118128e-03
+True:Southwest-False:Southwest     0.000000e+00
+False:West-True:Southwest          0.000000e+00
+True:West-True:Southwest           2.459829e-05
+
+Levene's test for def_TDs :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  25.649 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for def_TDs :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.021133515 0.021316488
+Region              0.002157791 0.002218944
+Hall_Of_Fame:Region 0.006250594 0.006400799
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.48041, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for AverageYrdperINT accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    840   839.6  12.887 0.000333 ***
+Region                 6   1052   175.3   2.691 0.013036 *  
+Hall_Of_Fame:Region    4    297    74.2   1.139 0.335998    
+Residuals           9212 600174    65.2                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against AverageYrdperINT :
+               diff      lwr      upr        p.adj
+True-False 3.316003 1.505324 5.126683 0.0003325655
+
+Significant Tukey's HSD results for Region against AverageYrdperINT :
+                       diff        lwr      upr      p.adj
+Southwest-Midwest 0.9460815 0.07649021 1.815673 0.02271905
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against AverageYrdperINT :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for AverageYrdperINT :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11   3.033 0.0004671 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for AverageYrdperINT :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0013598649 0.0013629634
+Region              0.0017465416 0.0017498430
+Hall_Of_Fame:Region 0.0004928071 0.0004943596
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.41407, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Fumble_recovery_kept_pct accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame           1     776   776.4   0.569  0.451
+Region                 6    8599  1433.2   1.051  0.390
+Hall_Of_Fame:Region    4    1898   474.4   0.348  0.846
+Residuals           2613 3563427  1363.7               
+6599 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Fumble_recovery_kept_pct :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Fumble_recovery_kept_pct :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Fumble_recovery_kept_pct :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Fumble_recovery_kept_pct :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11   2.397 0.005895 **
+      2613                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Fumble_recovery_kept_pct :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0002439178 0.0002446296
+Region              0.0024054961 0.0024072969
+Hall_Of_Fame:Region 0.0005308710 0.0005322669
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.16516, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Forced_Fumbles accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    221  220.79  32.393  1.3e-08 ***
+Region                 6    184   30.65   4.497 0.000148 ***
+Hall_Of_Fame:Region    4    143   35.78   5.249 0.000320 ***
+Residuals           9212  62787    6.82                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Forced_Fumbles :
+               diff      lwr      upr        p.adj
+True-False 1.700441 1.114792 2.286091 1.294081e-08
+
+Significant Tukey's HSD results for Region against Forced_Fumbles :
+                          diff        lwr         upr        p.adj
+Southwest-Midwest   -0.2951556 -0.5764179 -0.01389344 0.0324407102
+Southwest-Southeast -0.3538509 -0.6066700 -0.10103167 0.0007322423
+West-Southeast      -0.3029755 -0.5359784 -0.06997273 0.0024261160
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Forced_Fumbles :
+                                      diff         lwr         upr        p.adj
+True:Midwest-False:Midwest       3.3809639  0.73268376  6.02924411 1.532256e-03
+True:Southeast-False:Midwest     2.0910376  0.63713394  3.54494135 1.242666e-04
+False:Northeast-True:Midwest    -3.4658828 -6.12313776 -0.80862793 1.020378e-03
+True:Northeast-True:Midwest     -4.1818182 -8.25116004 -0.11247633 3.715878e-02
+False:Southeast-True:Midwest    -3.3157616 -5.96032366 -0.67119956 2.128502e-03
+False:Southwest-True:Midwest    -3.6749244 -6.32721450 -1.02263435 2.919989e-04
+False:West-True:Midwest         -3.6007982 -6.25069496 -0.95090138 4.446647e-04
+True:West-True:Midwest          -4.1818182 -8.00832081 -0.35531555 1.758767e-02
+True:Southeast-False:Northeast   2.1759566  0.70576888  3.64614423 6.155855e-05
+True:Southeast-False:Southeast   2.0258353  0.57871523  3.47295541 2.321549e-04
+False:Southwest-False:Southeast -0.3591628 -0.64807917 -0.07024647 2.475422e-03
+False:West-False:Southeast      -0.2850366 -0.55108730 -0.01898582 2.266816e-02
+False:Southwest-True:Southeast  -2.3849981 -3.84619312 -0.92380316 4.024016e-06
+False:West-True:Southeast       -2.3108719 -3.76771817 -0.85402559 9.441465e-06
+True:Southwest-False:Southwest   2.6749244  0.02263435  5.32721450 4.568164e-02
+
+Levene's test for Forced_Fumbles :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  7.3065 1.436e-12 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Forced_Fumbles :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.003436274 0.003454281
+Region              0.002903611 0.002920390
+Hall_Of_Fame:Region 0.002259505 0.002274035
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.37472, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Completion_Percentage accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   13793   13793  66.053 4.96e-16 ***
+Region                 6    2328     388   1.858   0.0841 .  
+Hall_Of_Fame:Region    4    8294    2073   9.929 5.15e-08 ***
+Residuals           9212 1923680     209                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Completion_Percentage :
+               diff      lwr    upr p.adj
+True-False 13.44032 10.19865 16.682     0
+
+Significant Tukey's HSD results for Region against Completion_Percentage :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Completion_Percentage :
+                                        diff          lwr        upr
+True:Northeast-False:International  38.67875  17.19437069  60.163129
+True:West-False:International       34.10600  14.03532007  54.176680
+True:Northeast-False:Midwest        35.56104  18.38587229  52.736209
+True:West-False:Midwest             30.98829  15.61818830  46.358393
+True:Northeast-True:Midwest         28.17875   5.65420917  50.703291
+True:West-True:Midwest              23.60600   2.42561808  44.786382
+True:Northeast-False:No College     38.67875  12.49909727  64.858403
+True:West-False:No College          34.10600   9.07346406  59.138536
+True:Northeast-False:Northeast      34.70046  17.48287308  51.918045
+True:West-False:Northeast           30.12771  14.71022206  45.545196
+False:Southeast-True:Northeast     -35.51874 -52.67634811 -18.361135
+True:Southeast-True:Northeast      -28.29956 -47.20039114  -9.398730
+False:Southwest-True:Northeast     -35.74036 -52.93447951 -18.546248
+True:Southwest-True:Northeast      -25.79966 -48.32419993  -3.275118
+False:West-True:Northeast          -34.67526 -51.85806985 -17.492458
+True:West-False:Southeast           30.94599  15.59551621  46.296467
+True:West-True:Southeast            23.72681   6.44980222  41.003819
+True:West-False:Southwest           31.16761  15.77634213  46.558886
+True:West-True:Southwest            21.22691   0.04652717  42.407291
+True:West-False:West                30.10251  14.72387741  45.481150
+                                          p.adj
+True:Northeast-False:International 1.457121e-07
+True:West-False:International      1.111995e-06
+True:Northeast-False:Midwest       3.310389e-10
+True:West-False:Midwest            1.266771e-09
+True:Northeast-True:Midwest        2.214238e-03
+True:West-True:Midwest             1.352335e-02
+True:Northeast-False:No College    6.436446e-05
+True:West-False:No College         4.202418e-04
+True:Northeast-False:Northeast     1.288940e-09
+True:West-False:Northeast          5.286591e-09
+False:Southeast-True:Northeast     3.340455e-10
+True:Southeast-True:Northeast      4.582998e-05
+False:Southwest-True:Northeast     2.667894e-10
+True:Southwest-True:Northeast      9.188723e-03
+False:West-True:Northeast          1.211547e-09
+True:West-False:Southeast          1.272114e-09
+True:West-True:Southeast           3.544751e-04
+True:West-False:Southwest          1.025461e-09
+True:West-True:Southwest           4.885641e-02
+True:West-False:West               4.907864e-09
+
+Levene's test for Completion_Percentage :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11   10.75 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Completion_Percentage :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.007102721 0.007141498
+Region              0.001194852 0.001208555
+Hall_Of_Fame:Region 0.004257290 0.004292814
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.51947, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Yrds_gained_per_Attempt accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    668   667.8  80.874  < 2e-16 ***
+Region                 6     71    11.8   1.428      0.2    
+Hall_Of_Fame:Region    4    566   141.4  17.122 5.34e-14 ***
+Residuals           9212  76067     8.3                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Yrds_gained_per_Attempt :
+              diff      lwr      upr p.adj
+True-False 2.95735 2.312732 3.601968     0
+
+Significant Tukey's HSD results for Region against Yrds_gained_per_Attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Yrds_gained_per_Attempt :
+                                        diff           lwr       upr
+True:Northeast-False:International 10.037500   5.765260063 14.309740
+True:West-False:International       6.930000   2.938878864 10.921121
+True:Northeast-False:Midwest        9.541397   6.126058454 12.956737
+True:West-False:Midwest             6.433897   3.377501807  9.490293
+True:Northeast-True:Midwest         8.355682   3.876602319 12.834761
+True:West-True:Midwest              5.248182   1.036392768  9.459971
+True:Northeast-False:No College    10.037500   4.831589403 15.243411
+True:West-False:No College          6.930000   1.952197373 11.907803
+True:Northeast-False:Northeast      9.360710   5.936936212 12.784484
+True:West-False:Northeast           6.253210   3.187391853  9.319028
+False:Southeast-True:Northeast     -9.574411 -12.986257534 -6.162564
+True:Southeast-True:Northeast      -7.972635 -11.731127807 -4.214142
+False:Southwest-True:Northeast     -9.550314 -12.969421063 -6.131207
+True:Southwest-True:Northeast      -8.019318 -12.498397681 -3.540239
+False:West-True:Northeast          -9.491922 -12.908780049 -6.075064
+True:Southeast-False:Southeast      1.601776   0.008946515  3.194605
+True:West-False:Southeast           6.466911   3.414417849  9.519404
+True:West-True:Southeast            4.865135   1.429544792  8.300725
+True:West-False:Southwest           6.442814   3.382208929  9.503420
+True:West-True:Southwest            4.911818   0.700029131  9.123607
+True:West-False:West                6.384422   3.326329444  9.442515
+                                          p.adj
+True:Northeast-False:International 0.000000e+00
+True:West-False:International      5.346539e-07
+True:Northeast-False:Midwest       0.000000e+00
+True:West-False:Midwest            1.255718e-10
+True:Northeast-True:Midwest        3.696999e-08
+True:West-True:Midwest             2.375143e-03
+True:Northeast-False:No College    9.454679e-09
+True:West-False:No College         2.627742e-04
+True:Northeast-False:Northeast     0.000000e+00
+True:West-False:Northeast          7.198945e-10
+False:Southeast-True:Northeast     0.000000e+00
+True:Southeast-True:Northeast      7.370371e-11
+False:Southwest-True:Northeast     0.000000e+00
+True:Southwest-True:Northeast      1.788125e-07
+False:West-True:Northeast          0.000000e+00
+True:Southeast-False:Southeast     4.712041e-02
+True:West-False:Southeast          8.094547e-11
+True:West-True:Southeast           1.786590e-04
+True:West-False:Southwest          1.255018e-10
+True:West-True:Southwest           7.027987e-03
+True:West-False:West               2.082030e-10
+
+Levene's test for Yrds_gained_per_Attempt :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  14.512 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Yrds_gained_per_Attempt :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0086457718 0.0087173305
+Region              0.0009141191 0.0009289266
+Hall_Of_Fame:Region 0.0073091711 0.0073796123
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.50345, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Passing_TD_per_Game accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   1.30  1.2998  64.352 1.17e-15 ***
+Region                 6   0.25  0.0411   2.036   0.0575 .  
+Hall_Of_Fame:Region    4   1.59  0.3981  19.709 3.61e-16 ***
+Residuals           9212 186.07  0.0202                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Passing_TD_per_Game :
+                diff        lwr       upr p.adj
+True-False 0.1304726 0.09859086 0.1623543     0
+
+Significant Tukey's HSD results for Region against Passing_TD_per_Game :
+                     diff          lwr        upr      p.adj
+West-Southwest 0.01658155 0.0006480602 0.03251504 0.03508472
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Passing_TD_per_Game :
+                                         diff          lwr         upr
+True:Northeast-False:International  0.2184302  0.007132439  0.42972805
+True:West-False:International       0.5053871  0.307992939  0.70278122
+True:Northeast-False:Midwest        0.1987114  0.029794455  0.36762831
+True:West-False:Midwest             0.4856682  0.334504027  0.63683241
+True:West-True:Midwest              0.3514740  0.143165952  0.55978196
+True:West-False:No College          0.5053871  0.259193331  0.75158083
+True:Northeast-False:Northeast      0.1944556  0.025121455  0.36378966
+True:West-False:Northeast           0.4814124  0.329782177  0.63304262
+False:Southeast-True:Northeast     -0.1970945 -0.365838741 -0.02835032
+False:Southwest-True:Northeast     -0.2013897 -0.370492934 -0.03228639
+False:West-True:Northeast          -0.1882854 -0.357277405 -0.01929332
+True:West-True:Northeast            0.2869568  0.060813438  0.51310024
+True:West-False:Southeast           0.4840514  0.333080204  0.63502253
+True:West-True:Southeast            0.4187034  0.248784892  0.58862194
+True:West-False:Southwest           0.4883465  0.336974101  0.63971889
+True:West-True:Southwest            0.5010211  0.292713094  0.70932911
+True:West-False:West                0.4752422  0.323994070  0.62649032
+                                          p.adj
+True:Northeast-False:International 3.473930e-02
+True:West-False:International      0.000000e+00
+True:Northeast-False:Midwest       6.150445e-03
+True:West-False:Midwest            0.000000e+00
+True:West-True:Midwest             1.405317e-06
+True:West-False:No College         5.201537e-10
+True:Northeast-False:Northeast     8.849072e-03
+True:West-False:Northeast          0.000000e+00
+False:Southeast-True:Northeast     6.864827e-03
+False:Southwest-True:Northeast     5.070598e-03
+False:West-True:Northeast          1.358245e-02
+True:West-True:Northeast           1.714148e-03
+True:West-False:Southeast          0.000000e+00
+True:West-True:Southeast           0.000000e+00
+True:West-False:Southwest          0.000000e+00
+True:West-True:Southwest           0.000000e+00
+True:West-False:West               0.000000e+00
+
+Levene's test for Passing_TD_per_Game :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  14.127 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Passing_TD_per_Game :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.006905117 0.006972644
+Region              0.001303972 0.001324213
+Hall_Of_Fame:Region 0.008415912 0.008485269
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.50059, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Interceptions_Thrown_per_passing_attempt accounting for interactions between HOF status and College Region:
+                     Df Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame          1  0.011 0.01144   0.274  0.601
+Region                5  0.179 0.03588   0.858  0.509
+Hall_Of_Fame:Region   4  0.059 0.01472   0.352  0.843
+Residuals           712 29.775 0.04182               
+8501 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Interceptions_Thrown_per_passing_attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Interceptions_Thrown_per_passing_attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Interceptions_Thrown_per_passing_attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Interceptions_Thrown_per_passing_attempt :
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value Pr(>F)
+group  10    0.55 0.8546
+      712               
+
+Eta squared for Interceptions_Thrown_per_passing_attempt :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0005218971 0.0005259979
+Region              0.0059756922 0.0059897224
+Hall_Of_Fame:Region 0.0019613511 0.0019738986
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.34425, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for First_downs_per_attempt_percentage accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   6936    6936  78.899  < 2e-16 ***
+Region                 6    594      99   1.127    0.344    
+Hall_Of_Fame:Region    4   3386     847   9.629 9.08e-08 ***
+Residuals           9212 809858      88                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against First_downs_per_attempt_percentage :
+              diff      lwr      upr p.adj
+True-False 9.53102 7.427689 11.63435     0
+
+Significant Tukey's HSD results for Region against First_downs_per_attempt_percentage :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against First_downs_per_attempt_percentage :
+                                         diff         lwr         upr
+True:Northeast-False:International  27.177500  13.2375610  41.1174390
+True:West-False:International       19.757000   6.7343266  32.7796734
+True:Northeast-False:Midwest        25.710501  14.5665530  36.8544481
+True:Southeast-False:Midwest         5.649217   0.4275942  10.8708393
+True:West-False:Midwest             18.290001   8.3172532  28.2627479
+True:Northeast-True:Midwest         19.207500   4.5926619  33.8223381
+True:Northeast-False:No College     27.177500  10.1910766  44.1639234
+True:West-False:No College          19.757000   3.5148727  35.9991273
+True:Northeast-False:Northeast      25.097281  13.9258106  36.2687506
+True:West-False:Northeast           17.676781   7.6732881  27.6802731
+False:Southeast-True:Northeast     -25.604533 -36.7370855 -14.4719799
+True:Southeast-True:Northeast      -20.061284 -32.3249112  -7.7976564
+False:Southwest-True:Northeast     -25.777719 -36.9339604 -14.6214776
+True:Southwest-True:Northeast      -18.843864 -33.4587018  -4.2290255
+False:West-True:Northeast          -25.400670 -36.5495731 -14.2517665
+True:Southeast-False:Southeast       5.543249   0.3459894  10.7405085
+True:West-False:Southeast           18.184033   8.2240200  28.1440455
+False:Southwest-True:Southeast      -5.716435 -10.9642440  -0.4686264
+False:West-True:Southeast           -5.339386 -10.5715767  -0.1071953
+True:West-True:Southeast            12.640784   1.4307580  23.8508096
+True:West-False:Southwest           18.357219   8.3707359  28.3437021
+True:West-False:West                17.980170   8.0018850  27.9584545
+                                          p.adj
+True:Northeast-False:International 5.850954e-09
+True:West-False:International      3.246660e-05
+True:Northeast-False:Midwest       0.000000e+00
+True:Southeast-False:Midwest       2.003637e-02
+True:West-False:Midwest            7.215616e-08
+True:Northeast-True:Midwest        8.795297e-04
+True:Northeast-False:No College    7.337290e-06
+True:West-False:No College         3.590080e-03
+True:Northeast-False:Northeast     0.000000e+00
+True:West-False:Northeast          2.880830e-07
+False:Southeast-True:Northeast     0.000000e+00
+True:Southeast-True:Northeast      3.759617e-06
+False:Southwest-True:Northeast     0.000000e+00
+True:Southwest-True:Northeast      1.272748e-03
+False:West-True:Northeast          0.000000e+00
+True:Southeast-False:Southeast     2.396408e-02
+True:West-False:Southeast          8.589266e-08
+False:Southwest-True:Southeast     1.835080e-02
+False:West-True:Southeast          4.017271e-02
+True:West-True:Southeast           1.149655e-02
+True:West-False:Southwest          6.603063e-08
+True:West-False:West               1.409378e-07
+
+Levene's test for First_downs_per_attempt_percentage :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  11.326 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for First_downs_per_attempt_percentage :
+                          eta.sq eta.sq.part
+Hall_Of_Fame        0.0084441754 0.008485384
+Region              0.0007239611 0.000733182
+Hall_Of_Fame:Region 0.0041256699 0.004163873
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.51308, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Been_Sacked accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value  Pr(>F)    
+Hall_Of_Fame           1   97474   97474 135.609 < 2e-16 ***
+Region                 6   14172    2362   3.286 0.00313 ** 
+Hall_Of_Fame:Region    4  166081   41520  57.764 < 2e-16 ***
+Residuals           9212 6621466     719                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Been_Sacked :
+               diff      lwr      upr p.adj
+True-False 35.72883 29.71459 41.74306     0
+
+Significant Tukey's HSD results for Region against Been_Sacked :
+                   diff        lwr      upr       p.adj
+West-Midwest   2.718032 0.01110774 5.424955 0.048284634
+West-Southeast 3.035388 0.64260419 5.428173 0.003488160
+West-Southwest 4.040684 1.03495828 7.046409 0.001443145
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Been_Sacked :
+                                    diff        lwr         upr        p.adj
+True:West-False:International  159.10000 121.863171 196.3368290 0.0000000000
+True:Southeast-False:Midwest    20.21936   5.288736  35.1499880 0.0004778033
+True:West-False:Midwest        156.23828 127.722363 184.7541989 0.0000000000
+True:West-True:Midwest         135.46364  96.167994 174.7592787 0.0000000000
+True:West-False:No College     159.10000 112.657515 205.5424855 0.0000000000
+True:Southeast-False:Northeast  19.61110   4.513252  34.7089559 0.0011051802
+True:West-False:Northeast      155.63002 127.026193 184.2338535 0.0000000000
+False:Southwest-True:Northeast -32.21979 -64.119772  -0.3198065 0.0449607217
+True:West-True:Northeast       125.10000  82.439853 167.7601469 0.0000000000
+True:Southeast-False:Southeast  20.46905   5.608083  35.3300085 0.0003325169
+True:West-False:Southeast      156.48796 128.008459 184.9674696 0.0000000000
+False:Southwest-True:Southeast -21.30087 -36.306373  -6.2953676 0.0001689228
+False:West-True:Southeast      -18.34964 -33.310486  -3.3887970 0.0031228931
+True:West-True:Southeast       136.01892 103.965146 168.0726917 0.0000000000
+True:West-False:Southwest      157.31979 128.764595 185.8749830 0.0000000000
+True:West-True:Southwest       158.73636 119.440721 198.0320060 0.0000000000
+True:West-False:West           154.36856 125.836809 182.9003121 0.0000000000
+
+Levene's test for Been_Sacked :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  35.126 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Been_Sacked :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.014228001 0.014608209
+Region              0.002054154 0.002135741
+Hall_Of_Fame:Region 0.024072552 0.024468512
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.48333, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Passer_Rating accounting for interactions between HOF status and College Region:
+                      Df   Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    95633   95633  44.802 2.31e-11 ***
+Region                 6    10571    1762   0.825     0.55    
+Hall_Of_Fame:Region    4    59558   14889   6.975 1.33e-05 ***
+Residuals           9212 19663599    2135                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Passer_Rating :
+               diff      lwr      upr p.adj
+True-False 35.38994 25.02576 45.75411     0
+
+Significant Tukey's HSD results for Region against Passer_Rating :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Passer_Rating :
+                                         diff         lwr       upr
+True:Northeast-False:International  117.32500   48.635895 186.01411
+True:Northeast-False:Midwest        111.64497   56.733122 166.55681
+True:West-False:Midwest              53.65997    4.519216 102.80072
+True:Northeast-True:Midwest          91.82500   19.810327 163.83967
+True:Northeast-False:No College     116.97500   33.274331 200.67567
+True:Northeast-False:Northeast      110.51876   55.471302 165.56623
+True:West-False:Northeast            52.53376    3.241515 101.82601
+False:Southeast-True:Northeast     -112.39849 -167.254187 -57.54279
+True:Southeast-True:Northeast       -89.70608 -150.135154 -29.27701
+False:Southwest-True:Northeast     -113.67845 -168.650871 -58.70602
+True:Southwest-True:Northeast       -92.83409 -164.848764 -20.81942
+False:West-True:Northeast          -113.32287 -168.259135 -58.38660
+True:West-False:Southeast            54.41349    5.335486 103.49149
+True:West-False:Southwest            55.69345    6.485012 104.90188
+True:West-False:West                 55.33787    6.169832 104.50591
+                                          p.adj
+True:Northeast-False:International 9.364800e-07
+True:Northeast-False:Midwest       8.428881e-10
+True:West-False:Midwest            1.777627e-02
+True:Northeast-True:Midwest        1.567731e-03
+True:Northeast-False:No College    2.411589e-04
+True:Northeast-False:Northeast     1.545692e-09
+True:West-False:Northeast          2.418968e-02
+False:Southeast-True:Northeast     5.720897e-10
+True:Southeast-True:Northeast      5.707408e-05
+False:Southwest-True:Northeast     3.539917e-10
+True:Southwest-True:Northeast      1.277722e-03
+False:West-True:Northeast          4.038335e-10
+True:West-False:Southeast          1.452018e-02
+True:West-False:Southwest          1.091425e-02
+True:West-False:West               1.180844e-02
+
+Levene's test for Passer_Rating :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)    
+group   11  6.6616 3.24e-11 ***
+      9212                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Passer_Rating :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0048202196 0.0048373400
+Region              0.0005330892 0.0005372942
+Hall_Of_Fame:Region 0.0030035125 0.0030196857
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.46195, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Yards_per_Reception accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value Pr(>F)  
+Hall_Of_Fame           1    215  214.90   5.791 0.0161 *
+Region                 6    225   37.50   1.011 0.4162  
+Hall_Of_Fame:Region    4    163   40.84   1.100 0.3544  
+Residuals           9212 341836   37.11                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Yards_per_Reception :
+               diff       lwr      upr      p.adj
+True-False 1.677621 0.3111139 3.044128 0.01612545
+
+Significant Tukey's HSD results for Region against Yards_per_Reception :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Yards_per_Reception :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Yards_per_Reception :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value  Pr(>F)  
+group   11  1.5835 0.09632 .
+      9212                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Yards_per_Reception :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0006442339 0.0006449546
+Region              0.0006570177 0.0006577442
+Hall_Of_Fame:Region 0.0004770047 0.0004776182
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.36865, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for First_down_receptions_percentage accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value  Pr(>F)   
+Hall_Of_Fame           1    6374    6374  10.110 0.00148 **
+Region                 6    9993    1665   2.642 0.01463 * 
+Hall_Of_Fame:Region    4    1661     415   0.659 0.62082   
+Residuals           9212 5807410     630                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against First_down_receptions_percentage :
+               diff      lwr      upr       p.adj
+True-False 9.136277 3.503865 14.76869 0.001479387
+
+Significant Tukey's HSD results for Region against First_down_receptions_percentage :
+                       diff        lwr        upr      p.adj
+Southwest-Midwest -2.838723 -5.5437276 -0.1337193 0.03242979
+West-Southwest     3.004675  0.1897718  5.8195786 0.02752123
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against First_down_receptions_percentage :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for First_down_receptions_percentage :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11  2.5758 0.002908 **
+      9212                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for First_down_receptions_percentage :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0011346999 0.0011369280
+Region              0.0017153538 0.0017177228
+Hall_Of_Fame:Region 0.0002850504 0.0002858535
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.41625, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Receiving_TDs accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1  23973   23973 349.387  < 2e-16 ***
+Region                 6    948     158   2.303   0.0318 *  
+Hall_Of_Fame:Region    4   4658    1165  16.973 7.11e-14 ***
+Residuals           9212 632079      69                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Receiving_TDs :
+               diff      lwr      upr p.adj
+True-False 17.71892 15.86074 19.57711     0
+
+Significant Tukey's HSD results for Region against Receiving_TDs :
+                          diff       lwr         upr      p.adj
+Southwest-Midwest   -0.9552695 -1.847676 -0.06286340 0.02676245
+Southwest-Southeast -0.8998138 -1.701974 -0.09765345 0.01641508
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Receiving_TDs :
+                                        diff         lwr        upr
+True:Midwest-False:International    20.96753   9.7718780  32.163187
+True:Northeast-False:International  36.41071  24.0954943  48.725934
+True:Southeast-False:International  20.92085  12.2019824  29.639716
+True:West-False:International       14.78571   3.2808514  26.290577
+True:Midwest-False:Midwest          18.99922  10.5965969  27.401850
+True:Northeast-False:Midwest        34.44241  24.5973001  44.287510
+True:Southeast-False:Midwest        18.95254  14.3395051  23.565576
+True:West-False:Midwest             12.81741   4.0069953  21.627815
+False:No College-True:Midwest      -21.01515 -35.1175291  -6.912774
+False:Northeast-True:Midwest       -19.27189 -27.7029896 -10.840785
+True:Northeast-True:Midwest         15.44318   2.5317232  28.354640
+False:Southeast-True:Midwest       -19.06035 -27.4511834 -10.669524
+False:Southwest-True:Midwest       -19.82496 -28.2403144 -11.409616
+True:Southwest-True:Midwest        -15.90909 -27.7574580  -4.060724
+False:West-True:Midwest            -19.28059 -27.6883474 -10.872836
+True:Northeast-False:No College     36.45833  21.4517010  51.464966
+True:Southeast-False:No College     20.96847   8.7392815  33.197655
+True:West-False:No College          14.83333   0.4842483  29.182418
+True:Northeast-False:Northeast      34.71507  24.8456495  44.584489
+True:Southeast-False:Northeast      19.22520  14.5605023  23.889906
+True:West-False:Northeast           13.09007   4.2524976  21.927641
+False:Southeast-True:Northeast     -34.50354 -44.3385743 -24.668497
+True:Southeast-True:Northeast      -15.48986 -26.3241496  -4.655580
+False:Southwest-True:Northeast     -35.26815 -45.1241129 -25.412181
+True:Southwest-True:Northeast      -31.35227 -44.2637314 -18.440814
+False:West-True:Northeast          -34.72377 -44.5732567 -24.874290
+True:West-True:Northeast           -21.62500 -34.8054763  -8.444524
+True:Southeast-False:Southeast      19.01367  14.4221591  23.605183
+True:West-False:Southeast           12.87854   4.0793762  21.677695
+False:Southwest-True:Southeast     -19.77828 -24.4144514 -15.142112
+True:Southwest-True:Southeast      -15.86241 -25.4049318  -6.319884
+False:West-True:Southeast          -19.23391 -23.8562802 -14.611537
+True:West-False:Southwest           13.64315   4.8206020  22.465692
+True:West-False:West                13.09877   4.2834714  21.914075
+                                          p.adj
+True:Midwest-False:International   3.158529e-08
+True:Northeast-False:International 0.000000e+00
+True:Southeast-False:International 0.000000e+00
+True:West-False:International      1.353493e-03
+True:Midwest-False:Midwest         0.000000e+00
+True:Northeast-False:Midwest       0.000000e+00
+True:Southeast-False:Midwest       0.000000e+00
+True:West-False:Midwest            9.430295e-05
+False:No College-True:Midwest      5.176613e-05
+False:Northeast-True:Midwest       0.000000e+00
+True:Northeast-True:Midwest        4.731752e-03
+False:Southeast-True:Midwest       0.000000e+00
+False:Southwest-True:Midwest       0.000000e+00
+True:Southwest-True:Midwest        5.706326e-04
+False:West-True:Midwest            0.000000e+00
+True:Northeast-False:No College    0.000000e+00
+True:Southeast-False:No College    8.229122e-07
+True:West-False:No College         3.474226e-02
+True:Northeast-False:Northeast     0.000000e+00
+True:Southeast-False:Northeast     0.000000e+00
+True:West-False:Northeast          6.038371e-05
+False:Southeast-True:Northeast     0.000000e+00
+True:Southeast-True:Northeast      1.430011e-04
+False:Southwest-True:Northeast     0.000000e+00
+True:Southwest-True:Northeast      0.000000e+00
+False:West-True:Northeast          0.000000e+00
+True:West-True:Northeast           3.430999e-06
+True:Southeast-False:Southeast     0.000000e+00
+True:West-False:Southeast          8.133731e-05
+False:Southwest-True:Southeast     0.000000e+00
+True:Southwest-True:Southeast      2.275231e-06
+False:West-True:Southeast          0.000000e+00
+True:West-False:Southwest          1.936878e-05
+True:West-False:West               5.569743e-05
+
+Levene's test for Receiving_TDs :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  39.358 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Receiving_TDs :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.036203266 0.036513707
+Region              0.001432913 0.001497723
+Hall_Of_Fame:Region 0.007040548 0.007316107
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.38963, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Rushing_Yards_per_Attempt accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value Pr(>F)  
+Hall_Of_Fame           1     48   47.91   6.522 0.0107 *
+Region                 6     45    7.49   1.020 0.4098  
+Hall_Of_Fame:Region    4     19    4.71   0.641 0.6334  
+Residuals           9212  67670    7.35                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Rushing_Yards_per_Attempt :
+                diff       lwr      upr      p.adj
+True-False 0.7921242 0.1841277 1.400121 0.01066951
+
+Significant Tukey's HSD results for Region against Rushing_Yards_per_Attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Rushing_Yards_per_Attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Rushing_Yards_per_Attempt :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group   11  0.9656 0.4756
+      9212               
+
+Eta squared for Rushing_Yards_per_Attempt :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0007067938 0.0007074597
+Region              0.0006633890 0.0006640428
+Hall_Of_Fame:Region 0.0002777586 0.0002781397
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.39575, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for First_down_rushes accounting for interactions between HOF status and College Region:
+                      Df   Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   535392  535392 311.234  < 2e-16 ***
+Region                 6     4672     779   0.453    0.844    
+Hall_Of_Fame:Region    4    83470   20867  12.131 7.79e-10 ***
+Residuals           9212 15846726    1720                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against First_down_rushes :
+               diff      lwr      upr p.adj
+True-False 83.73576 74.43169 93.03983     0
+
+Significant Tukey's HSD results for Region against First_down_rushes :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against First_down_rushes :
+                                         diff         lwr        upr
+True:Midwest-False:International     69.55195   13.494485  125.60941
+True:Northeast-False:International   94.76786   33.104648  156.43107
+True:Southeast-False:International   69.02124   25.365229  112.67724
+True:Southwest-False:International  160.82468  104.767212  216.88214
+True:West-False:International       110.94286   53.337165  168.54855
+True:Midwest-False:Midwest           63.22570   21.153128  105.29826
+True:Northeast-False:Midwest         88.44160   39.146441  137.73677
+True:Southeast-False:Midwest         62.69498   39.597177   85.79279
+True:Southwest-False:Midwest        154.49842  112.425855  196.57099
+True:West-False:Midwest             104.61660   60.502236  148.73097
+False:Northeast-True:Midwest        -63.78900 -106.004145  -21.57385
+False:Southeast-True:Midwest        -61.91214 -103.925640  -19.89864
+False:Southwest-True:Midwest        -64.01939 -106.155662  -21.88312
+True:Southwest-True:Midwest          91.27273   31.947085  150.59837
+False:West-True:Midwest             -63.68185 -105.780097  -21.58360
+True:Northeast-False:No College      90.62500   15.485692  165.76431
+True:Southeast-False:No College      64.87838    3.645943  126.11081
+True:Southwest-False:No College     156.68182   86.070180  227.29346
+True:West-False:No College          106.80000   34.953079  178.64692
+True:Northeast-False:Northeast       89.00491   39.587999  138.42182
+True:Southeast-False:Northeast       63.25829   39.901781   86.61479
+True:Southwest-False:Northeast      155.06173  112.846579  197.27687
+True:West-False:Northeast           105.17991   60.929538  149.43028
+False:Southeast-True:Northeast      -87.12805 -136.372809  -37.88329
+False:Southwest-True:Northeast      -89.23530 -138.584845  -39.88576
+True:Southwest-True:Northeast        66.05682    1.408198  130.70544
+False:West-True:Northeast           -88.89776 -138.214842  -39.58067
+True:Southeast-False:Southeast       61.38143   38.391393   84.37147
+True:Southwest-False:Southeast      153.18487  111.171370  195.19837
+True:West-False:Southeast           103.30305   59.245013  147.36109
+False:Southwest-True:Southeast      -63.48868  -86.702319  -40.27504
+True:Southwest-True:Southeast        91.80344   44.023323  139.58356
+False:West-True:Southeast           -63.15113  -86.295689  -40.00658
+True:Southwest-False:Southwest      155.29212  113.155847  197.42839
+True:West-False:Southwest           105.41030   61.235172  149.58543
+False:West-True:Southwest          -154.95457 -197.052825 -112.85632
+True:West-False:West                105.07276   60.933894  149.21162
+                                          p.adj
+True:Midwest-False:International   2.560861e-03
+True:Northeast-False:International 2.294240e-05
+True:Southeast-False:International 1.037921e-05
+True:Southwest-False:International 0.000000e+00
+True:West-False:International      9.925872e-09
+True:Midwest-False:Midwest         4.166738e-05
+True:Northeast-False:Midwest       1.655968e-07
+True:Southeast-False:Midwest       0.000000e+00
+True:Southwest-False:Midwest       0.000000e+00
+True:West-False:Midwest            0.000000e+00
+False:Northeast-True:Midwest       3.609713e-05
+False:Southeast-True:Midwest       6.866866e-05
+False:Southwest-True:Midwest       3.123110e-05
+True:Southwest-True:Midwest        2.228483e-05
+False:West-True:Midwest            3.507433e-05
+True:Northeast-False:No College    4.132951e-03
+True:Southeast-False:No College    2.598437e-02
+True:Southwest-False:No College    0.000000e+00
+True:West-False:No College         5.514678e-05
+True:Northeast-False:Northeast     1.433722e-07
+True:Southeast-False:Northeast     0.000000e+00
+True:Southwest-False:Northeast     0.000000e+00
+True:West-False:Northeast          0.000000e+00
+False:Southeast-True:Northeast     2.753481e-07
+False:Southwest-True:Northeast     1.236817e-07
+True:Southwest-True:Northeast      3.961197e-02
+False:West-True:Northeast          1.390675e-07
+True:Southeast-False:Southeast     0.000000e+00
+True:Southwest-False:Southeast     0.000000e+00
+True:West-False:Southeast          0.000000e+00
+False:Southwest-True:Southeast     0.000000e+00
+True:Southwest-True:Southeast      1.097072e-08
+False:West-True:Southeast          0.000000e+00
+True:Southwest-False:Southwest     0.000000e+00
+True:West-False:Southwest          0.000000e+00
+False:West-True:Southwest          0.000000e+00
+True:West-False:West               0.000000e+00
+
+Levene's test for First_down_rushes :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  33.044 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for First_down_rushes :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0324008280 0.0325786217
+Region              0.0002836869 0.0002947625
+Hall_Of_Fame:Region 0.0050679134 0.0052397255
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.42125, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for TDs_per_Rush_Attempt accounting for interactions between HOF status and College Region:
+                      Df Sum Sq  Mean Sq F value Pr(>F)  
+Hall_Of_Fame           1  0.008 0.007765   3.601 0.0578 .
+Region                 6  0.012 0.001984   0.920 0.4791  
+Hall_Of_Fame:Region    4  0.004 0.000900   0.417 0.7962  
+Residuals           9212 19.867 0.002157                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against TDs_per_Rush_Attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against TDs_per_Rush_Attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against TDs_per_Rush_Attempt :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for TDs_per_Rush_Attempt :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group   11  0.9812 0.4609
+      9212               
+
+Eta squared for TDs_per_Rush_Attempt :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0003857908 0.0003860935
+Region              0.0005985460 0.0005988883
+Hall_Of_Fame:Region 0.0001810558 0.0001812350
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.42575, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------

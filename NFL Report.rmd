@@ -286,8 +286,6 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Discussion and Conclusion
 
-
-
 notes: variables that do not have same hist shape for all and retired
 
 log transformed: total tackles,

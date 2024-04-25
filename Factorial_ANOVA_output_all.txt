@@ -1,0 +1,1073 @@
+
+Factorial ANOVA for BMI accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1      4    3.96   0.227    0.634    
+Region                 6    850  141.64   8.133 8.64e-09 ***
+Hall_Of_Fame:Region    4     58   14.52   0.834    0.504    
+Residuals           9212 160434   17.42                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against BMI :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against BMI :
+                          diff        lwr         upr        p.adj
+Southwest-Midwest   -0.5297050 -0.9793031 -0.08010699 9.287300e-03
+West-Midwest        -0.6863804 -1.1077340 -0.26502689 3.254905e-05
+Southeast-Northeast -0.5579589 -1.0214927 -0.09442510 7.101354e-03
+Southwest-Northeast -0.8633892 -1.4065629 -0.32021544 5.751020e-05
+West-Northeast      -1.0200646 -1.5401012 -0.50002793 1.571983e-07
+West-Southeast      -0.4621057 -0.8345610 -0.08965035 4.758135e-03
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against BMI :
+                                      diff       lwr         upr        p.adj
+False:Southwest-False:Midwest   -0.5335043 -1.046900 -0.02010886 3.271335e-02
+False:West-False:Midwest        -0.6876368 -1.168418 -0.20685598 1.417324e-04
+False:Southeast-False:Northeast -0.5829932 -1.112755 -0.05323119 1.604683e-02
+False:Southwest-False:Northeast -0.8917432 -1.512423 -0.27106361 1.273917e-04
+False:West-False:Northeast      -1.0458757 -1.639861 -0.45189045 3.272237e-07
+False:West-False:Southeast      -0.4628825 -0.888165 -0.03759998 1.854580e-02
+
+Levene's test for BMI :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group   11  1.0871 0.3669
+      9212               
+
+Eta squared for BMI :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        2.356569e-05 2.369907e-05
+Region              5.267209e-03 5.269234e-03
+Hall_Of_Fame:Region 3.598922e-04 3.618068e-04
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.070851, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Total_Tackles_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value Pr(>F)  
+Hall_Of_Fame           1     18  18.418   5.433 0.0198 *
+Region                 6     56   9.386   2.769 0.0109 *
+Hall_Of_Fame:Region    4     26   6.505   1.919 0.1044  
+Residuals           5155  17474   3.390                 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+4057 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Total_Tackles_trans :
+                diff       lwr      upr      p.adj
+True-False 0.6649217 0.1057014 1.224142 0.01979304
+
+Significant Tukey's HSD results for Region against Total_Tackles_trans :
+                         diff        lwr       upr      p.adj
+Southeast-Northeast 0.2839234 0.01526064 0.5525863 0.03034108
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Total_Tackles_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Total_Tackles_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11  2.3251 0.007605 **
+      5155                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Total_Tackles_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0009942694 0.0009990033
+Region              0.0032044116 0.0032125347
+Hall_Of_Fame:Region 0.0014805718 0.0014868946
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.056922, p-value = 5.773e-15
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Sacks_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1    2.6  2.5647  18.315 1.93e-05 ***
+Region                 6    1.2  0.1971   1.407    0.208    
+Hall_Of_Fame:Region    4    0.1  0.0176   0.126    0.973    
+Residuals           2847  398.7  0.1400                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+6365 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Sacks_trans :
+                 diff        lwr        upr        p.adj
+True-False -0.2804006 -0.4088735 -0.1519277 1.934209e-05
+
+Significant Tukey's HSD results for Region against Sacks_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Sacks_trans :
+                                    diff         lwr       upr      p.adj
+False:Southwest-True:Southeast 0.3178713 0.022669979 0.6130726 0.02131088
+False:West-True:Southeast      0.2978185 0.003214238 0.5924227 0.04454688
+
+Levene's test for Sacks_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11  2.7373 0.001585 **
+      2847                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Sacks_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0063985728 0.0064183831
+Region              0.0029378810 0.0029572426
+Hall_Of_Fame:Region 0.0001752128 0.0001768593
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.18674, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Passes_Defended_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1     23  23.071  13.676 0.000223 ***
+Region                 5     17   3.478   2.062 0.067425 .  
+Hall_Of_Fame:Region    2      3   1.607   0.953 0.385792    
+Residuals           2032   3428   1.687                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+7183 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Passes_Defended_trans :
+               diff       lwr      upr       p.adj
+True-False 1.079331 0.5069609 1.651701 0.000222938
+
+Significant Tukey's HSD results for Region against Passes_Defended_trans :
+                     diff        lwr         upr      p.adj
+West-Southeast -0.2552947 -0.4985698 -0.01201971 0.03324416
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Passes_Defended_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Passes_Defended_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value  Pr(>F)  
+group    8  1.8213 0.06874 .
+      2032                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Passes_Defended_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0061345060 0.0061743093
+Region              0.0050092055 0.0050474241
+Hall_Of_Fame:Region 0.0009260964 0.0009370173
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.069168, p-value = 6.6e-09
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for def_TDs_trans accounting for interactions between HOF status and College Region:
+                     Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame          1  12.64  12.642  45.227 3.34e-11 ***
+Region                5   1.99   0.398   1.423    0.214    
+Hall_Of_Fame:Region   4   2.30   0.574   2.054    0.085 .  
+Residuals           799 223.35   0.280                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+8414 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against def_TDs_trans :
+               diff       lwr       upr p.adj
+True-False 0.768567 0.5442351 0.9928988     0
+
+Significant Tukey's HSD results for Region against def_TDs_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against def_TDs_trans :
+                                     diff         lwr         upr        p.adj
+True:Midwest-False:Midwest      1.4777213  0.46701648  2.48842620 1.241523e-04
+True:Southeast-False:Midwest    0.5972049  0.09575484  1.09865491 5.764117e-03
+True:Southwest-False:Midwest    0.9783979  0.10018902  1.85660680 1.458857e-02
+False:No College-True:Midwest  -1.8431430 -3.42514637 -0.26113969 7.947078e-03
+False:Northeast-True:Midwest   -1.6016811 -2.62438285 -0.57897929 2.300867e-05
+False:Southeast-True:Midwest   -1.4311028 -2.43608000 -0.42612550 2.235616e-04
+False:Southwest-True:Midwest   -1.4494228 -2.46181076 -0.43703483 1.988103e-04
+False:West-True:Midwest        -1.4857891 -2.50013714 -0.47144101 1.190041e-04
+True:Southeast-False:Northeast  0.7211646  0.19595346  1.24637576 4.792954e-04
+True:Southwest-False:Northeast  1.1023576  0.21036803  1.99434725 3.238495e-03
+True:Southeast-False:Southeast  0.5505863  0.06078317  1.04038942 1.298261e-02
+True:Southwest-False:Southeast  0.9317793  0.06016828  1.80339037 2.424765e-02
+False:Southwest-True:Southeast -0.5689063 -1.07374019 -0.06407248 1.256003e-02
+False:West-True:Southeast      -0.6052726 -1.11402581 -0.09651942 5.854473e-03
+True:Southwest-False:Southwest  0.9500994  0.06995396  1.83024478 2.160526e-02
+False:West-True:Southwest      -0.9864656 -1.86886495 -0.10406634 1.395069e-02
+
+Levene's test for def_TDs_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value Pr(>F)
+group  10   1.365 0.1919
+      799               
+
+Eta squared for def_TDs_trans :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.050620655 0.051644866
+Region              0.008275882 0.008824563
+Hall_Of_Fame:Region 0.009560408 0.010180308
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.28882, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for AverageYrdperINT_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame           1    0.7  0.6670   0.982  0.322
+Region                 5    5.4  1.0741   1.581  0.162
+Hall_Of_Fame:Region    4    2.5  0.6367   0.937  0.441
+Residuals           2048 1391.0  0.6792               
+7165 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against AverageYrdperINT_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against AverageYrdperINT_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against AverageYrdperINT_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for AverageYrdperINT_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group   10  0.9863  0.453
+      2048               
+
+Eta squared for AverageYrdperINT_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0005316238 0.0005346185
+Region              0.0038369941 0.0038458252
+Hall_Of_Fame:Region 0.0018197331 0.0018276165
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.089179, p-value = 1.199e-14
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Fumble_recovery_kept_pct accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame           1     776   776.4   0.569  0.451
+Region                 6    8599  1433.2   1.051  0.390
+Hall_Of_Fame:Region    4    1898   474.4   0.348  0.846
+Residuals           2613 3563427  1363.7               
+6599 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Fumble_recovery_kept_pct :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Fumble_recovery_kept_pct :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Fumble_recovery_kept_pct :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Fumble_recovery_kept_pct :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11   2.397 0.005895 **
+      2613                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Fumble_recovery_kept_pct :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0002439178 0.0002446296
+Region              0.0024054961 0.0024072969
+Hall_Of_Fame:Region 0.0005308710 0.0005322669
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.16516, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Forced_Fumbles_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   18.2  18.198  23.980 1.06e-06 ***
+Region                 6    3.3   0.545   0.719    0.635    
+Hall_Of_Fame:Region    2    0.2   0.101   0.133    0.875    
+Residuals           1836 1393.3   0.759                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+7378 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Forced_Fumbles_trans :
+               diff       lwr      upr       p.adj
+True-False 1.010426 0.6057467 1.415105 1.05854e-06
+
+Significant Tukey's HSD results for Region against Forced_Fumbles_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Forced_Fumbles_trans :
+                                     diff         lwr        upr       p.adj
+True:Southeast-False:Midwest    1.0083759  0.11381783  1.9029340 0.011621059
+True:Southeast-False:Northeast  0.9539211  0.04242072  1.8654215 0.030173867
+True:Southeast-False:Southeast  0.9583721  0.07038613  1.8463580 0.020732689
+False:Southwest-True:Southeast -1.0367786 -1.94466916 -0.1288881 0.009663572
+False:West-True:Southeast      -1.0423729 -1.94176212 -0.1429837 0.007779532
+
+Levene's test for Forced_Fumbles_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group    9  1.6006 0.1095
+      1836               
+
+Eta squared for Forced_Fumbles_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0126373767 0.0126713222
+Region              0.0023122886 0.0023427538
+Hall_Of_Fame:Region 0.0001428564 0.0001450574
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.21056, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Completion_Percentage accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   13793   13793  66.053 4.96e-16 ***
+Region                 6    2328     388   1.858   0.0841 .  
+Hall_Of_Fame:Region    4    8294    2073   9.929 5.15e-08 ***
+Residuals           9212 1923680     209                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Completion_Percentage :
+               diff      lwr    upr p.adj
+True-False 13.44032 10.19865 16.682     0
+
+Significant Tukey's HSD results for Region against Completion_Percentage :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Completion_Percentage :
+                                        diff          lwr        upr
+True:Northeast-False:International  38.67875  17.19437069  60.163129
+True:West-False:International       34.10600  14.03532007  54.176680
+True:Northeast-False:Midwest        35.56104  18.38587229  52.736209
+True:West-False:Midwest             30.98829  15.61818830  46.358393
+True:Northeast-True:Midwest         28.17875   5.65420917  50.703291
+True:West-True:Midwest              23.60600   2.42561808  44.786382
+True:Northeast-False:No College     38.67875  12.49909727  64.858403
+True:West-False:No College          34.10600   9.07346406  59.138536
+True:Northeast-False:Northeast      34.70046  17.48287308  51.918045
+True:West-False:Northeast           30.12771  14.71022206  45.545196
+False:Southeast-True:Northeast     -35.51874 -52.67634811 -18.361135
+True:Southeast-True:Northeast      -28.29956 -47.20039114  -9.398730
+False:Southwest-True:Northeast     -35.74036 -52.93447951 -18.546248
+True:Southwest-True:Northeast      -25.79966 -48.32419993  -3.275118
+False:West-True:Northeast          -34.67526 -51.85806985 -17.492458
+True:West-False:Southeast           30.94599  15.59551621  46.296467
+True:West-True:Southeast            23.72681   6.44980222  41.003819
+True:West-False:Southwest           31.16761  15.77634213  46.558886
+True:West-True:Southwest            21.22691   0.04652717  42.407291
+True:West-False:West                30.10251  14.72387741  45.481150
+                                          p.adj
+True:Northeast-False:International 1.457121e-07
+True:West-False:International      1.111995e-06
+True:Northeast-False:Midwest       3.310389e-10
+True:West-False:Midwest            1.266771e-09
+True:Northeast-True:Midwest        2.214238e-03
+True:West-True:Midwest             1.352335e-02
+True:Northeast-False:No College    6.436446e-05
+True:West-False:No College         4.202418e-04
+True:Northeast-False:Northeast     1.288940e-09
+True:West-False:Northeast          5.286591e-09
+False:Southeast-True:Northeast     3.340455e-10
+True:Southeast-True:Northeast      4.582998e-05
+False:Southwest-True:Northeast     2.667894e-10
+True:Southwest-True:Northeast      9.188723e-03
+False:West-True:Northeast          1.211547e-09
+True:West-False:Southeast          1.272114e-09
+True:West-True:Southeast           3.544751e-04
+True:West-False:Southwest          1.025461e-09
+True:West-True:Southwest           4.885641e-02
+True:West-False:West               4.907864e-09
+
+Levene's test for Completion_Percentage :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11   10.75 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Completion_Percentage :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.007102721 0.007141498
+Region              0.001194852 0.001208555
+Hall_Of_Fame:Region 0.004257290 0.004292814
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.51947, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Yrds_gained_per_Attempt_trans accounting for interactions between HOF status and College Region:
+                     Df Sum Sq Mean Sq F value  Pr(>F)   
+Hall_Of_Fame          1   2.97  2.9716   7.344 0.00695 **
+Region                4   1.85  0.4634   1.145 0.33432   
+Hall_Of_Fame:Region   4   1.74  0.4361   1.078 0.36667   
+Residuals           530 214.46  0.4046                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+8684 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Yrds_gained_per_Attempt_trans :
+                diff       lwr       upr     p.adj
+True-False 0.3837091 0.1055608 0.6618573 0.0069466
+
+Significant Tukey's HSD results for Region against Yrds_gained_per_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Yrds_gained_per_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Yrds_gained_per_Attempt_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value Pr(>F)
+group   9  0.6988 0.7102
+      530               
+
+Eta squared for Yrds_gained_per_Attempt_trans :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.013153169 0.013374806
+Region              0.008386746 0.008569601
+Hall_Of_Fame:Region 0.007892882 0.008069041
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.19981, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Passing_TD_per_Game_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   0.94  0.9355  37.919 7.68e-10 ***
+Region                 6   0.41  0.0680   2.757   0.0112 *  
+Hall_Of_Fame:Region    4   0.97  0.2427   9.838 6.12e-08 ***
+Residuals           9212 227.26  0.0247                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against Passing_TD_per_Game_trans :
+                diff        lwr       upr       p.adj
+True-False 0.1106851 0.07545099 0.1459192 7.32877e-10
+
+Significant Tukey's HSD results for Region against Passing_TD_per_Game_trans :
+                     diff          lwr        upr      p.adj
+West-Midwest   0.01606281 0.0002044264 0.03192120 0.04477841
+West-Southeast 0.01639511 0.0023770956 0.03041313 0.01015083
+West-Southwest 0.01858418 0.0009752749 0.03619308 0.03072726
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Passing_TD_per_Game_trans :
+                                   diff         lwr       upr        p.adj
+True:West-False:International 0.4316171 0.213466872 0.6497673 3.038050e-09
+True:West-False:Midwest       0.4040774 0.237018215 0.5711366 0.000000e+00
+True:West-True:Midwest        0.3008739 0.070662194 0.5310856 9.810897e-04
+True:West-False:No College    0.4316171 0.159535962 0.7036983 9.417506e-06
+True:West-False:Northeast     0.3957470 0.228172816 0.5633212 0.000000e+00
+True:West-True:Northeast      0.2528574 0.002934896 0.5027799 4.414241e-02
+True:West-False:Southeast     0.4039130 0.237067115 0.5707588 0.000000e+00
+True:West-True:Southeast      0.3464358 0.158650264 0.5342213 5.738068e-08
+True:West-False:Southwest     0.4058663 0.238576986 0.5731555 0.000000e+00
+True:West-True:Southwest      0.3829602 0.152748477 0.6131719 2.222423e-06
+True:West-False:West          0.3898489 0.222696983 0.5570009 0.000000e+00
+
+Levene's test for Passing_TD_per_Game_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)    
+group   11  8.5285 3.61e-15 ***
+      9212                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Passing_TD_per_Game_trans :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.004113194 0.004137889
+Region              0.001777496 0.001792379
+Hall_Of_Fame:Region 0.004228852 0.004253747
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.51713, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Interceptions_Thrown_per_passing_attempt_trans accounting for interactions between HOF status and College Region:
+                     Df Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame          1    0.0  0.0033   0.003  0.956
+Region                4    4.6  1.1618   1.036  0.388
+Hall_Of_Fame:Region   4    7.3  1.8337   1.635  0.165
+Residuals           402  450.9  1.1215               
+8812 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Interceptions_Thrown_per_passing_attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Interceptions_Thrown_per_passing_attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Interceptions_Thrown_per_passing_attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Interceptions_Thrown_per_passing_attempt_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value Pr(>F)
+group   9  0.6028 0.7948
+      402               
+
+Eta squared for Interceptions_Thrown_per_passing_attempt_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        7.284297e-07 7.477935e-07
+Region              1.004035e-02 1.020210e-02
+Hall_Of_Fame:Region 1.584775e-02 1.600860e-02
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.20107, p-value = 6.772e-15
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for First_downs_per_attempt_percentage accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   6936    6936  78.899  < 2e-16 ***
+Region                 6    594      99   1.127    0.344    
+Hall_Of_Fame:Region    4   3386     847   9.629 9.08e-08 ***
+Residuals           9212 809858      88                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against First_downs_per_attempt_percentage :
+              diff      lwr      upr p.adj
+True-False 9.53102 7.427689 11.63435     0
+
+Significant Tukey's HSD results for Region against First_downs_per_attempt_percentage :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against First_downs_per_attempt_percentage :
+                                         diff         lwr         upr
+True:Northeast-False:International  27.177500  13.2375610  41.1174390
+True:West-False:International       19.757000   6.7343266  32.7796734
+True:Northeast-False:Midwest        25.710501  14.5665530  36.8544481
+True:Southeast-False:Midwest         5.649217   0.4275942  10.8708393
+True:West-False:Midwest             18.290001   8.3172532  28.2627479
+True:Northeast-True:Midwest         19.207500   4.5926619  33.8223381
+True:Northeast-False:No College     27.177500  10.1910766  44.1639234
+True:West-False:No College          19.757000   3.5148727  35.9991273
+True:Northeast-False:Northeast      25.097281  13.9258106  36.2687506
+True:West-False:Northeast           17.676781   7.6732881  27.6802731
+False:Southeast-True:Northeast     -25.604533 -36.7370855 -14.4719799
+True:Southeast-True:Northeast      -20.061284 -32.3249112  -7.7976564
+False:Southwest-True:Northeast     -25.777719 -36.9339604 -14.6214776
+True:Southwest-True:Northeast      -18.843864 -33.4587018  -4.2290255
+False:West-True:Northeast          -25.400670 -36.5495731 -14.2517665
+True:Southeast-False:Southeast       5.543249   0.3459894  10.7405085
+True:West-False:Southeast           18.184033   8.2240200  28.1440455
+False:Southwest-True:Southeast      -5.716435 -10.9642440  -0.4686264
+False:West-True:Southeast           -5.339386 -10.5715767  -0.1071953
+True:West-True:Southeast            12.640784   1.4307580  23.8508096
+True:West-False:Southwest           18.357219   8.3707359  28.3437021
+True:West-False:West                17.980170   8.0018850  27.9584545
+                                          p.adj
+True:Northeast-False:International 5.850954e-09
+True:West-False:International      3.246660e-05
+True:Northeast-False:Midwest       0.000000e+00
+True:Southeast-False:Midwest       2.003637e-02
+True:West-False:Midwest            7.215616e-08
+True:Northeast-True:Midwest        8.795297e-04
+True:Northeast-False:No College    7.337290e-06
+True:West-False:No College         3.590080e-03
+True:Northeast-False:Northeast     0.000000e+00
+True:West-False:Northeast          2.880830e-07
+False:Southeast-True:Northeast     0.000000e+00
+True:Southeast-True:Northeast      3.759617e-06
+False:Southwest-True:Northeast     0.000000e+00
+True:Southwest-True:Northeast      1.272748e-03
+False:West-True:Northeast          0.000000e+00
+True:Southeast-False:Southeast     2.396408e-02
+True:West-False:Southeast          8.589266e-08
+False:Southwest-True:Southeast     1.835080e-02
+False:West-True:Southeast          4.017271e-02
+True:West-True:Southeast           1.149655e-02
+True:West-False:Southwest          6.603063e-08
+True:West-False:West               1.409378e-07
+
+Levene's test for First_downs_per_attempt_percentage :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  11.326 < 2.2e-16 ***
+      9212                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for First_downs_per_attempt_percentage :
+                          eta.sq eta.sq.part
+Hall_Of_Fame        0.0084441754 0.008485384
+Region              0.0007239611 0.000733182
+Hall_Of_Fame:Region 0.0041256699 0.004163873
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.51308, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Been_Sacked_trans accounting for interactions between HOF status and College Region:
+                     Df Sum Sq Mean Sq F value  Pr(>F)   
+Hall_Of_Fame          1    8.9   8.852   2.307 0.12954   
+Region                4   53.7  13.423   3.498 0.00796 **
+Hall_Of_Fame:Region   4   63.3  15.819   4.123 0.00274 **
+Residuals           429 1646.1   3.837                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+8785 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Been_Sacked_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Been_Sacked_trans :
+                    diff       lwr      upr       p.adj
+West-Southeast 0.8755705 0.1882732 1.562868 0.004822753
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Been_Sacked_trans :
+                                diff         lwr       upr       p.adj
+False:West-False:Southeast 0.8201481 0.008627284  1.631669 0.045211893
+True:West-False:Southeast  3.5712919 0.418478709  6.724105 0.012854378
+True:West-False:Southwest  3.3458130 0.106108357  6.585518 0.036496743
+True:West-True:Southwest   5.7215352 0.963212214 10.479858 0.005793635
+
+Levene's test for Been_Sacked_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value    Pr(>F)    
+group   9  3.9042 8.768e-05 ***
+      429                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Been_Sacked_trans :
+                        eta.sq eta.sq.part
+Hall_Of_Fame        0.00414789 0.004445086
+Region              0.03030181 0.031587594
+Hall_Of_Fame:Region 0.03570995 0.037016537
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.11778, p-value = 1.027e-05
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Passer_Rating_trans accounting for interactions between HOF status and College Region:
+                     Df Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame          1    1.8   1.776   0.657  0.418
+Region                5   23.0   4.603   1.704  0.131
+Hall_Of_Fame:Region   4    9.0   2.244   0.831  0.506
+Residuals           653 1763.8   2.701               
+8560 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Passer_Rating_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Passer_Rating_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Passer_Rating_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Passer_Rating_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value Pr(>F)
+group  10  0.8856 0.5464
+      653               
+
+Eta squared for Passer_Rating_trans :
+                         eta.sq  eta.sq.part
+Hall_Of_Fame        0.000808244 0.0008230385
+Region              0.012802889 0.0128799207
+Hall_Of_Fame:Region 0.004992861 0.0050626798
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.238, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Yards_per_Reception_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value  Pr(>F)   
+Hall_Of_Fame           1    0.1  0.0684   0.266 0.60631   
+Region                 6    3.9  0.6538   2.539 0.01870 * 
+Hall_Of_Fame:Region    4    3.9  0.9718   3.774 0.00457 **
+Residuals           3257  838.8  0.2575                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+5955 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Yards_per_Reception_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Yards_per_Reception_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Yards_per_Reception_trans :
+                                    diff       lwr         upr      p.adj
+True:West-False:International -1.2218329 -2.364359 -0.07930700 0.02321678
+True:West-True:Southeast      -0.9185318 -1.785018 -0.05204557 0.02585685
+
+Levene's test for Yards_per_Reception_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value    Pr(>F)    
+group   11  2.9475 0.0006809 ***
+      3257                      
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Yards_per_Reception_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        7.551584e-05 7.621936e-05
+Region              4.633635e-03 4.655386e-03
+Hall_Of_Fame:Region 4.591261e-03 4.613008e-03
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.086008, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for First_down_receptions_percentage accounting for interactions between HOF status and College Region:
+                      Df  Sum Sq Mean Sq F value  Pr(>F)   
+Hall_Of_Fame           1    6374    6374  10.110 0.00148 **
+Region                 6    9993    1665   2.642 0.01463 * 
+Hall_Of_Fame:Region    4    1661     415   0.659 0.62082   
+Residuals           9212 5807410     630                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Significant Tukey's HSD results for Hall_Of_Fame against First_down_receptions_percentage :
+               diff      lwr      upr       p.adj
+True-False 9.136277 3.503865 14.76869 0.001479387
+
+Significant Tukey's HSD results for Region against First_down_receptions_percentage :
+                       diff        lwr        upr      p.adj
+Southwest-Midwest -2.838723 -5.5437276 -0.1337193 0.03242979
+West-Southwest     3.004675  0.1897718  5.8195786 0.02752123
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against First_down_receptions_percentage :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for First_down_receptions_percentage :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11  2.5758 0.002908 **
+      9212                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for First_down_receptions_percentage :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        0.0011346999 0.0011369280
+Region              0.0017153538 0.0017177228
+Hall_Of_Fame:Region 0.0002850504 0.0002858535
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.41625, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Receiving_TDs_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1   54.8   54.75  36.349 1.96e-09 ***
+Region                 6   31.4    5.23   3.471  0.00204 ** 
+Hall_Of_Fame:Region    4   11.9    2.97   1.972  0.09623 .  
+Residuals           1970 2967.4    1.51                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+7242 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Receiving_TDs_trans :
+               diff       lwr      upr        p.adj
+True-False 1.339502 0.9037768 1.775228 2.004024e-09
+
+Significant Tukey's HSD results for Region against Receiving_TDs_trans :
+                          diff        lwr         upr       p.adj
+Southwest-Midwest   -0.3858746 -0.6764606 -0.09528857 0.001776077
+Southwest-Southeast -0.2939399 -0.5528385 -0.03504117 0.014399174
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Receiving_TDs_trans :
+                                         diff         lwr         upr
+True:Northeast-False:International  3.6134342  0.04441416  7.18245425
+True:Northeast-False:Midwest        2.3859218  0.31455869  4.45728491
+True:Southeast-False:Midwest        1.3404628  0.21898576  2.46193990
+False:Southwest-False:Midwest      -0.3609827 -0.69442010 -0.02754527
+True:Northeast-False:Northeast      2.5025341  0.41980203  4.58526611
+True:Southeast-False:Northeast      1.4570751  0.31473608  2.59941412
+False:Southeast-True:Northeast     -2.4746939 -4.54062072 -0.40876705
+False:Southwest-True:Northeast     -2.7469045 -4.82357766 -0.67023132
+False:West-True:Northeast          -2.5797994 -4.65185368 -0.50774508
+True:Southeast-False:Southeast      1.4292349  0.31783067  2.54063915
+False:Southwest-True:Southeast     -1.7014455 -2.83270019 -0.57019084
+False:West-True:Southeast          -1.5343404 -2.65709359 -0.41158723
+                                          p.adj
+True:Northeast-False:International 4.382945e-02
+True:Northeast-False:Midwest       8.517294e-03
+True:Southeast-False:Midwest       4.829254e-03
+False:Southwest-False:Midwest      1.992855e-02
+True:Northeast-False:Northeast     4.438082e-03
+True:Southeast-False:Northeast     1.582266e-03
+False:Southeast-True:Northeast     4.664307e-03
+False:Southwest-True:Northeast     7.893065e-04
+False:West-True:Northeast          2.441324e-03
+True:Southeast-False:Southeast     1.359813e-03
+False:Southwest-True:Southeast     4.250498e-05
+False:West-True:Southeast          4.036738e-04
+
+Levene's test for Receiving_TDs_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value   Pr(>F)   
+group   11  2.8138 0.001193 **
+      1970                    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for Receiving_TDs_trans :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.018357031  0.01861042
+Region              0.010235015  0.01046244
+Hall_Of_Fame:Region 0.003875942  0.00398799
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.1056, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for Rushing_Yards_per_Attempt_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame           1    0.1  0.0677   0.173  0.678
+Region                 6    3.4  0.5655   1.444  0.194
+Hall_Of_Fame:Region    4    1.0  0.2555   0.652  0.625
+Residuals           2241  877.7  0.3916               
+6971 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against Rushing_Yards_per_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against Rushing_Yards_per_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against Rushing_Yards_per_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for Rushing_Yards_per_Attempt_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value Pr(>F)
+group   11  0.8929 0.5466
+      2241               
+
+Eta squared for Rushing_Yards_per_Attempt_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        6.207196e-05 6.238509e-05
+Region              3.846145e-03 3.850901e-03
+Hall_Of_Fame:Region 1.158456e-03 1.163018e-03
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.12266, p-value < 2.2e-16
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for First_down_rushes_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value   Pr(>F)    
+Hall_Of_Fame           1     62   61.92  20.287 7.18e-06 ***
+Region                 6     14    2.37   0.776   0.5891    
+Hall_Of_Fame:Region    4     37    9.24   3.027   0.0168 *  
+Residuals           1510   4609    3.05                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+7702 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against First_down_rushes_trans :
+               diff       lwr      upr        p.adj
+True-False 1.427962 0.8060921 2.049832 7.176177e-06
+
+Significant Tukey's HSD results for Region against First_down_rushes_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against First_down_rushes_trans :
+                                    diff        lwr        upr       p.adj
+True:Southwest-False:Midwest    3.324579  0.3705783  6.2785788 0.011899255
+True:Southwest-False:Northeast  3.386300  0.4108861  6.3617146 0.010164077
+True:Southwest-False:Southeast  3.329553  0.3854648  6.2736420 0.011116817
+True:Southwest-False:Southwest  3.451528  0.4865887  6.4164673 0.007296644
+False:West-True:Southwest      -3.600602 -6.5580793 -0.6431238 0.003592638
+True:West-False:West            2.797916  0.1475258  5.4483056 0.027237280
+
+Levene's test for First_down_rushes_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value  Pr(>F)  
+group   11  1.6685 0.07493 .
+      1510                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for First_down_rushes_trans :
+                         eta.sq eta.sq.part
+Hall_Of_Fame        0.013131704 0.013275299
+Region              0.003007758 0.003072090
+Hall_Of_Fame:Region 0.007827007 0.007955257
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.079488, p-value = 8.876e-09
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
+
+Factorial ANOVA for TDs_per_Rush_Attempt_trans accounting for interactions between HOF status and College Region:
+                      Df Sum Sq Mean Sq F value Pr(>F)
+Hall_Of_Fame           1    0.0  0.0008   0.001  0.973
+Region                 5    5.7  1.1455   1.655  0.143
+Hall_Of_Fame:Region    4    2.8  0.7070   1.021  0.395
+Residuals           1124  778.1  0.6923               
+8089 observations deleted due to missingness
+
+Significant Tukey's HSD results for Hall_Of_Fame against TDs_per_Rush_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Region against TDs_per_Rush_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Significant Tukey's HSD results for Hall_Of_Fame:Region against TDs_per_Rush_Attempt_trans :
+[1] diff  lwr   upr   p.adj
+<0 rows> (or 0-length row.names)
+
+Levene's test for TDs_per_Rush_Attempt_trans :
+Levene's Test for Homogeneity of Variance (center = median)
+        Df F value  Pr(>F)  
+group   10   1.962 0.03413 *
+      1124                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Eta squared for TDs_per_Rush_Attempt_trans :
+                          eta.sq  eta.sq.part
+Hall_Of_Fame        2.856715e-07 2.888127e-07
+Region              7.280603e-03 7.306876e-03
+Hall_Of_Fame:Region 3.594714e-03 3.621082e-03
+
+	Asymptotic one-sample Kolmogorov-Smirnov test
+
+data:  factorial_anova$residuals
+D = 0.10194, p-value = 1.138e-10
+alternative hypothesis: two-sided
+
+
+--------------------------------------------------
