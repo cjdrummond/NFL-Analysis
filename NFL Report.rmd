@@ -1,0 +1,295 @@
+---
+title: "Untitled"
+output: github_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+```         
+American football is a sport loved by many. It is a sport that is played by two teams of eleven players on a rectangular field with goalposts at each end. The object of the game is to score points by carrying the ball across the opponent's goal line or by kicking the ball through the opponent's goalposts. The team with the most points at the end of the game wins. Many of the players in the National Football League (NFL) are considered to be some of the best athletes in the world. They are strong, fast, and agile, and they have to be in order to compete at the highest level. In this project, we will analyze data of NFL players to see if we can identify some of the key factors that contribute to a player's success in the league. The data was obtained from Kaggle and was collected by Trevor Youngquist. The link to the dataset can be found [here](https://www.kaggle.com/trevoryoungquist/nfl-players-career-data). The dataset contains basic and career statistics for players from the 1960s to 2020. The data initial is separated into twenty different csv files, each containing data for a different position. For this project we will ignore the special teams positions and their data which lowers the csv files from twenty to twelve. 
+
+This data needed heavy cleaning and merging to able to analyze it. Of the twelve csv files there are six for active players and six for retired players. For the retired players the csv files are Defensive Stats, Fumbles Stats, Passing Stats, Receiving Stats, Rushing Stats, and Basic Stats. For the active players the csv files are Defensive Stats, Fumbles Stats, Passing Stats, Receiving Stats, Rushing Stats, and Basic Stats. 
+
+The csv files all had the same columns except for the active and retired basic stats csv files. 
+The column names for the defensive csv files are "Player_Id", "Year", "Team", "Games_Played", "Tackles", "Solo_Tackles", "Assisted_Tackles", "Sacks", "Sack_Yards", "Safties", "Passes_Deflected", "INTs", "TDs", "INT_Yards", "Average", "Long". 
+The Fumbles data has columns "Player_Id", "Year", "Team", "Games_Played", "Fumbles", "Fumbles_Lost", "Forced_Fumbles", "Own_Recovery", "Opposing_Recovery", "TDs"
+The Passing data has columns, "Player_Id", "Year", "Team", "Games_Played", "Attempts"                 "Completions", "Completion_Percentage", "Yards", "Average","Long", "TDs", "INTs", "First_Downs", "First_Down_Percentage", "Passes_Over_Twenty_Yards", "Passes_Over_Forty_Yards", "Sacks", "Sack_Yards", "Passer_Rating"
+The Receiving data has columns,"Player_Id", "Year", "Team", "Games_Played", "Receptions", "Yard", "Average", "Long", "TDs", "First_Downs", "First_Down_Percentage", "Receptions_Over_Twenty_Yards", "Receptions_Over_Forty_Yards" 
+The Rushing data has columns, "Player_Id", "Year", "Team", "Games_Played", "Attempts"                 "Yards", "Average", "Long", "TDs", "First_Downs", "First_Down_Percentage", "Rushes_Over_Twenty_Yards", "Rushes_Over_Forty_Yards", "Fumbles"
+The retired basic stats data has columns, "Player_Id", "Full_Name", "Position", "Height", "Weight", "College", "Hall_Of_Fame"
+The active basic stats data has columns, "Player_Id", "Full_Name", "Position", "Number", "Current_Team", "Height", "Weight", "Experience", "Age", "College"
+
+Since the data was conviently separated into active players and retired players I chose to go clean the data by positional data for both active and retired then merge those into large postional dataframes then merge those all together to create one massive dataframe. However to accomplish this, the data needed to heavy cleaning which is described below.
+```
+
+### Data Cleaning
+
+```         
+The libraries needed for data cleaning are dplyr, purrr, tidyr, and tibble packages. The first step was to load the data. When I looked at the each of the dataframes there seemed to be a lot of issues. All of the dataframes had different columns except for one column that allowed for merging, Player_Id and varied in the number of rows in each dataframe indicating that some Player_Id's were missing in some dataframes. While some dataframes had matching column names like INTs and Fumbles, it was inconistent on if these values were implying the same thing. Upon investigating further I also found that alot of the issues came from players before 1980. Some data collection methods were different back then and some of the performance metrics were not even collected until after 1960. I decided to only use data from the players who played from 1980 and beyond. The years the players played are not shown in the basic stats dataframes so I focused on the other dataframes for this. I also wanted to focus on players total career data instead of their individual year data. Because of this, I also needed to remove players that only had a career row which means that they played less than 1 year. Since I wanted to apply this process to multiple dataframes I created a function called allstatsfilter that takes a dataframe and does the following; Replaces TOTAL in the Year column to be 9999 and then converts Year to an integer class since all of them are whole numbers. Then it finds and removes any Player_Ids who have any year less than 1980. It then finds the Player_Ids who have atleast 2 rows of data meaning they have a year and total career of data, and removes those who only have one row of data. Then it subsets the dataframe to be only the rows where Year == 9999 and then changes 9999 back to "Total Career". The function then returns this new filtered dataframe. The function allstatsfilter is called within another function I created which will be mentioned shortly. When I was looking at the filtered dataframes more closely I saw that there were some errors when the data was scraped initially that I needed to address. To fix these issues and also help with renaming the columns to help with merging my data later on I created functions for each of the positional grouping dataframes. I will not describe each function in detail but essentially each of the functions takes in a dataframe and then calls the allstatsfilter function to create the filtered dataframe. Then creates an empty dataframe that has the correct dimesions and column names. It then fills in that new dataframe with the values from the filtered dataframe. This way it also assigns the correct class to the new columns as well. The function then returns the new fixed dataframe. This is done for all of the dataframes including the basic stats dataframes. 
+
+Then the dataframes are then merged using Player_Id and then are written to a csv file to preserve these changes for the analysis. This was a very brief explanation of this data cleaning and processing as that was not the main purpose of this project. The full detailed process for the data cleaning and processing can be found on my Github in the NFL Player Data Cleaning script. 
+
+One important thing to note about this data is the large amount of missing values for some of the players. This makes analysis much more difficult however it also makes sense for the data. The positions of the players determines a lot of what data is going to be collected on them. For example a quarterback is not going to have any data for Sacks due to the definition of what a Sack is. Many of these performance metrics that I will be analyzing are grouped by offensive and defensive positions. Since all of my variables except for a select few have some amount of missing data, a regression model is not beneficial with my available data. Instead I plan to use factorial ANOVA and ANCOVA to see the effect of a player's College geographical region, hall of fame status and height and weight (combined into BMI) has on their performance metrics. For both the factorial ANOVA and ANCOVA I analyzed 3 times. Once for the offense using the mainly offensive metrics. Another for the defense using the mainly defensive metrics, and a final one using the full ungrouped data with all of the performance metrics. 
+```
+
+## Literature Reviews
+
+<https://journals.lww.com/nsca-jscr/fulltext/2013/04000/Changes_in_the_Athletic_Profile_of_Elite_College.1.aspx>
+
+<https://www.proquest.com/openview/904419161ef9fda6686871710ee31b83/1?pq-origsite=gscholar&cbl=18750&diss=y>
+
+<https://www.actionnetwork.com/ncaaf/what-state-produces-the-most-nfl-players>
+
+<https://www.espn.com/nfl/story/_/id/18598468/what-artificial-intelligence-says-hall-fame-chances-kurt-warner-ladainian-tomlinson-terrell-davis>
+
+<https://link.springer.com/article/10.2165/00007256-200131110-00001>
+
+<https://journals.lww.com/nsca-jscr/fulltext/2020/03000/a_comparison_of_the_national_football_league_s.20.aspx>
+
+<https://surface.syr.edu/honors_capstone/792/>
+
+## Method
+
+```{r function and data load, message=FALSE, warning=FALSE, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(lme4)
+library(car)
+library(corrplot)
+library(lsr)
+library(multcomp)
+
+Data_Load_and_Simple_Fixing <- function(dataframe){
+    dataframe$Position <- as.factor(dataframe$Position)
+    dataframe$College <- as.factor(dataframe$College)
+    dataframe$Hall_Of_Fame <- as.factor(dataframe$Hall_Of_Fame)
+    dataframe$Player_Id <- as.factor(dataframe$Player_Id)
+
+    # filter out players with less than 2 games played
+    dataframe <- dataframe %>%
+        filter(Games_Played >= 2)
+    
+    # Drop players in Special Teams positions
+    dataframe <- dataframe %>%
+    filter(Position != "K" & Position != "P" & Position != "LS")
+    # Remove unused levels
+    dataframe$Position <- droplevels(dataframe$Position)
+
+    # add column to dataframe to indicate if player is offensive or defensive
+    offensive_positions <- c("RB", "WR", "OG", "TE", "QB", "C", "FB", "G", "T", "OT", "HB", "OL")
+    defensive_positions <- c("CB", "LB", "DE", "DT", "ILB", "DB", "OLB", "FS", "SS", "NT", "MLB","SAF")
+
+    dataframe$is_offense <- ifelse(dataframe$Position %in% offensive_positions, "True", "False")
+    dataframe$is_offense <- as.factor(dataframe$is_offense)
+
+    #colnames to change 0 to NA
+    # List of column names
+    cols_to_change <- c("Solo_Tackles", "Assisted_Tackles", "Sacks", 
+    "Safeties", "Passes_Defended", "Interceptions", "def_TDs", "INT_Yards", 
+    "AverageYrdperINT", "Tot_CareerHighINTReturn", "Fumbles", "Fumbles_Lost", 
+    "Forced_Fumbles", "Own_Recovery", "Opposing_Recovery", "Fumbles_TD", 
+    "Passing_Attempts", "Passing_Completions", "Completion_Percentage", 
+    "Passing_Yards_Gained", "Yrds_gained_per_Attempt", "Sum_cr_long_passes", 
+    "Passing_TDs", "Interceptions_thrown", "First_downs_thrown", 
+    "First_downs_per_attempt_percentage", "Been_Sacked", "Sack_Yards", 
+    "Sacked_per_game", "Passer_Rating", "Receptions", "Receiving_Yards", 
+    "Yards_per_Reception", "Sum_cr_long_receptions", "Receiving_TDs", 
+    "Receptions_per_Game", "Receiving_Yards_per_Game", "First_down_receptions", 
+    "First_down_receptions_percentage", "TDs_per_Reception", "Rushing_Attempts", 
+    "Rushing_Yards", "Rushing_Yards_per_Attempt", "Sum_cr_long_rush_yds", 
+    "Rushing_TDs", "Rushing_Yards_per_Game", "Rushing_Attempts_per_Game", 
+    "First_down_rushes", "First_down_rushes_percentage", "TDs_per_Rush_Attempt", 
+    "Rush_TD_per_Game")
+
+    # Convert all the columns to numeric
+    for (col in cols_to_change) {
+        dataframe[[col]] <- as.numeric(as.character(dataframe[[col]]))
+    }
+
+    # Replace 0's with NA in the columns
+    for (col in cols_to_change) {
+        dataframe[[col]][dataframe[[col]] == 0 & !is.na(dataframe[[col]])] <- NA
+    }
+
+    ## adding BMI Column to dataframe
+    dataframe$BMI <- dataframe$Weight / (dataframe$Height * dataframe$Height) * 703
+
+    return(dataframe)
+}
+
+# Create new variables
+
+New_Variable_and_DF_Creation <- function(dataframe){
+    # Create new variables
+    dataframe$Total_Tackles <- dataframe$Solo_Tackles + dataframe$Assisted_Tackles
+    dataframe$Fumble_recovery_kept_pct <- (((dataframe$Fumbles - dataframe$Fumbles_Lost) / dataframe$Fumbles) *100)
+    dataframe$Passing_TD_per_Game <- dataframe$Passing_TDs / dataframe$Games_Played
+    dataframe$Interceptions_Thrown_per_passing_attempt <- dataframe$Interceptions_thrown / dataframe$Passing_Attempts
+
+    # Create new dataframe with specified variables
+    new_df <- dataframe[, c("Player_Id", "Position", "is_offense", "College", "Hall_Of_Fame", "BMI", "Games_Played", "Total_Tackles", "Sacks", "Safeties", "Passes_Defended", "def_TDs", "AverageYrdperINT", "Fumble_recovery_kept_pct", "Forced_Fumbles", "Completion_Percentage", "Yrds_gained_per_Attempt", "Passing_TD_per_Game", "Interceptions_Thrown_per_passing_attempt", "First_downs_per_attempt_percentage", "Been_Sacked", "Passer_Rating", "Yards_per_Reception", "First_down_receptions_percentage", "Receiving_TDs", "Rushing_Yards_per_Attempt", "First_down_rushes", "TDs_per_Rush_Attempt")]
+
+    return(new_df)
+}
+
+Correlation_Matrix_and_Plot <- function(dataframe, columns_for_correlation){
+    # Compute the correlation matrix
+    cor_matrix <- cor(dataframe[columns_for_correlation], use = "pairwise.complete.obs")
+
+    # Create the correlation plot
+    corrplot(cor_matrix, method = "circle", type = "upper", tl.col = "black", tl.srt = 45, tl.cex = 0.6)
+    high_cor_pairs <- which(abs(cor_matrix) > 0.7 & cor_matrix != 1, arr.ind = TRUE)
+
+    if (nrow(high_cor_pairs) == 0) {
+    cat("There are no correlations more extreme than 0.7.\n")
+    } else {
+        # Print pairs
+        for (i in 1:nrow(high_cor_pairs)) {
+            row <- high_cor_pairs[i, "row"]
+            col <- high_cor_pairs[i, "col"]
+            if (row < col) {
+                cat(columns_for_correlation[row], "and", columns_for_correlation[col], "have a correlation of", cor_matrix[row, col], "\n")
+            }
+        }
+    }
+}
+
+Factorial_ANOVA <- function(dataframe, cols_for_fact_anova){
+    for (metric in cols_for_fact_anova) {
+        formula <- as.formula(paste(metric, "~ Hall_Of_Fame*Region"))
+        factorial_anova <- aov(formula, data = dataframe)
+        cat("\nFactorial ANOVA for", metric, "accounting for interactions between HOF status and College Region:\n")
+        print(summary(factorial_anova))
+
+        # Create a new dataframe excluding rows with NA in the current metric, is_offense, and Hall_Of_Fame
+        dataframe_no_na <- dataframe[!is.na(dataframe[[metric]]) & !is.na(dataframe$Region) & !is.na(dataframe$Hall_Of_Fame), ]
+        
+        # Create a new graphics device interaction plot
+        png(filename = paste0(metric, "_interaction_plot.png"))
+        interaction.plot(x.factor = dataframe_no_na$Region, trace.factor = dataframe_no_na$Hall_Of_Fame, response = dataframe_no_na[[metric]], type = "b", fun = mean, fixed = TRUE, leg.bty = "o", xlab = "is Offense Position", ylab = metric, main = paste(metric, "by College Region and Hall of Fame Status"))
+        dev.off()
+        # Perform Tukey's HSD test
+
+        tukey_results <- TukeyHSD(factorial_anova)
+        # Convert the results to dataframes
+        tukey_df_Hall_Of_Fame <- data.frame(tukey_results$Hall_Of_Fame)
+        tukey_df_Region <- data.frame(tukey_results$Region)
+        tukey_df_Hall_Of_Fame_Region <- data.frame(tukey_results$`Hall_Of_Fame:Region`)
+        
+        # Filter the dataframes to only include rows where the adjusted p-value is less than 0.05
+        significant_results_Hall_Of_Fame <- tukey_df_Hall_Of_Fame[tukey_df_Hall_Of_Fame$p.adj < 0.05 & !is.na(tukey_df_Hall_Of_Fame$p.adj), ]
+        significant_results_Region <- tukey_df_Region[tukey_df_Region$p.adj < 0.05 & !is.na(tukey_df_Region$p.adj), ]
+        significant_results_Hall_Of_Fame_Region <- tukey_df_Hall_Of_Fame_Region[tukey_df_Hall_Of_Fame_Region$p.adj < 0.05 & !is.na(tukey_df_Hall_Of_Fame_Region$p.adj), ]
+        
+        # Print the significant results
+        cat("\nSignificant Tukey's HSD results for Hall_Of_Fame against", metric, ":\n")
+        print(significant_results_Hall_Of_Fame)
+        cat("\nSignificant Tukey's HSD results for Region against", metric, ":\n")
+        print(significant_results_Region)
+        cat("\nSignificant Tukey's HSD results for Hall_Of_Fame:Region against", metric, ":\n")
+        print(significant_results_Hall_Of_Fame_Region)
+
+        # Perform Levene's test
+        cat("\nLevene's test for", metric, ":\n")
+        print(leveneTest(formula, data = dataframe))
+
+        # effect size
+        cat("\nEta squared for", metric, ":\n")
+        print(etaSquared(factorial_anova))
+
+        # Perform Kolmogorov-Smirnov test since data is too large for Shapiro-Wilk test 
+        aov_residuals <- residuals(factorial_anova)
+        #print(shapiro.test(aov_residuals))
+
+        print(ks.test(factorial_anova$residuals, "pnorm", mean = mean(factorial_anova$residuals), sd = sd(factorial_anova$residuals)))
+        cat("\n--------------------------------------------------\n")
+    }
+}
+
+ANCOVA_Region_HOF_BMI <- function(dataframe, cols_for_ANCOVA){
+    for (metric in cols_for_ANCOVA) {
+        formula <- as.formula(paste(metric, "~ Hall_Of_Fame*Region + BMI"))
+        ancova <- aov(formula, data = dataframe)
+        cat("\nANCOVA for", metric, "accounting for BMI across different College Regions:\n")
+        print(summary(ancova))
+
+        dataframe_no_na <- dataframe[!is.na(dataframe[[metric]]) & !is.na(dataframe$Region) & !is.na(dataframe$Hall_Of_Fame) & !is.na(dataframe$BMI), ]
+
+        cat("\nLevene's test for", metric, "~ Region:\n")
+        print(leveneTest(dataframe_no_na[[metric]] ~ dataframe_no_na$Region, data = dataframe_no_na))
+        
+        cat("\nLevene's test for", metric, "~ Hall_Of_Fame:\n")
+        print(leveneTest(dataframe_no_na[[metric]] ~ Hall_Of_Fame, data = dataframe_no_na))
+
+        cat("\nLevene's test for", metric, "~ Hall_Of_Fame:Region:\n")
+        print(leveneTest(dataframe_no_na[[metric]] ~ Hall_Of_Fame:Region, data = dataframe_no_na))
+
+        postHocs <- glht(ancova, linfct = mcp(Region = "Tukey", Hall_Of_Fame = "Tukey"))
+        cat("\nTukey's HSD post-hoc test for", metric, "compared with Region and Hall of Fame:\n")
+        print(summary(postHocs))
+        cat("\n--------------------------------------------------\n")
+    }
+}
+
+player_data <- read.csv("E:\\GitHub Rep\\Retired-NFL-Analysis\\Retired-NFL-Analysis\\merged_data_all.csv")
+player_retired <- read.csv("E:\\GitHub Rep\\Retired-NFL-Analysis\\Retired-NFL-Analysis\\merged_retired_data_all.csv")
+college_df <- read.csv("E:\\GitHub Rep\\Retired-NFL-Analysis\\Retired-NFL-Analysis\\college_regions.csv")
+
+player_data_filtered <- Data_Load_and_Simple_Fixing(player_data)
+player_retired_filtered <- Data_Load_and_Simple_Fixing(player_retired)
+```
+
+To start my analysis I chose to focus on players who had played at least 2 games played. I then looked at the correlation between height and weight for each of the players since I had a suspicion that these variables would be correlated. Height and weight had a correlation of `` `r cor(player_data_filtered$Height, player_data_filtered$Weight, use = "complete.obs")` `` which confirmed my suspicions so I chose to add a new variable, BMI to combine height and weight for analysis. Then with that I went and viewed a full correlation breakdown. I used a function I created that outputs a upper correlation plot as well as prints out pairs that have a high correlation.
+
+```{r Full Correlation breakdown, echo=FALSE, message=TRUE, warning=FALSE}
+cols_for_corr <- c("Solo_Tackles", "Assisted_Tackles", "Sacks", 
+"Safeties", "Passes_Defended", "Interceptions", "def_TDs", "INT_Yards", 
+"AverageYrdperINT", "Tot_CareerHighINTReturn", "Fumbles", "Fumbles_Lost", 
+"Forced_Fumbles", "Own_Recovery", "Opposing_Recovery", "Fumbles_TD", 
+"Passing_Attempts", "Passing_Completions", "Completion_Percentage", 
+"Passing_Yards_Gained", "Yrds_gained_per_Attempt", "Sum_cr_long_passes", 
+"Passing_TDs", "Interceptions_thrown", "First_downs_thrown", 
+"First_downs_per_attempt_percentage", "Been_Sacked", "Sack_Yards", 
+"Sacked_per_game", "Passer_Rating", "Receptions", "Receiving_Yards", 
+"Yards_per_Reception", "Sum_cr_long_receptions", "Receiving_TDs", 
+"Receptions_per_Game", "Receiving_Yards_per_Game", "First_down_receptions", 
+"First_down_receptions_percentage", "TDs_per_Reception", "Rushing_Attempts", 
+"Rushing_Yards", "Rushing_Yards_per_Attempt", "Sum_cr_long_rush_yds", 
+"Rushing_TDs", "Rushing_Yards_per_Game", "Rushing_Attempts_per_Game", 
+"First_down_rushes", "First_down_rushes_percentage", "TDs_per_Rush_Attempt", 
+"Rush_TD_per_Game", "BMI", "Games_Played")
+
+Correlation_Matrix_and_Plot(player_data_filtered, cols_for_corr)
+```
+
+Clearly there were quite a few pairs of variables with a high correlation that needed to be addressed before any models can be built. Many of these high correlation pairs however do make conceptual sense such as the attempts_per_game and total_yards_per_game as you need to attempt passes in order to get yards. Instead of removing these variables I opted for creating new dataframes to preserve the data for possible future analysis purposes. Another thing to note is that alot of the correlations and issues seen with the question marks in my plot come from the data that is able to be collected by position. As mentioned in the introduction, a QB wont have any data for Sacks as they are the players being sacked. However, some of the correlation pairs don't quite make sense like the correlation between passing_yards_gained and Interceptions_thrown. If a pass is completed thus yards are gained then an interception was not thrown. To possibly address this issue I will split the data into offensive and defensive positions and see if the correlations are still present I will also further manipulate the variables to include as few of variables as possible while keeping as much of the information from my data as I can. I also wanted to add something to the College variable as there were too many levels to really make use of it in analysis. I created a new csv file with all of the colleges in my data and added what region of the US they were located in effectively creating a new factor variable with 7 levels, "No College", "West", "Midwest", "Northeast", "Southwest", "Southeast" and "International". In my function New_Variable_and_DF_creation I create 3 new variables. 4 technically since I removed Total_Tackles earlier in the analysis but seeing the correlation with solo and assisted tackles I chose to add it back in and then remove the separated tackles. I created a variable "Fumble_recovery_kept_pct" to combine the highly correlated Fumbles and Fumbles_Lost variables. Since Fumbles describes how many fumbles that player themselves has recovered and then Fumbles_Lost tells us how many of those Fumbles that player has proceeded to lose again. Combining the two into what percentage of the recovered fumbled balls a player manages to keep is an interesting performance metric. The next variable I created was "Passing_TD_per_Game". I saw that Passing_TDs was heavily correlated with quite a few variables and I also recognized that the more games a player has played the more touchdowns that player is likely to throw. To essentially normalize this variable I made it a ratio of how many touchdowns a player has thrown over the number of games they have played. The last variable
+
+\
+\
+
+## Results
+
+You can also embed plots, for example:
+
+```{r, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Discussion and Conclusion
+
+
+
+notes: variables that do not have same hist shape for all and retired
+
+log transformed: total tackles,
+
+inverse transformed: sacks

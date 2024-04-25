@@ -1,5 +1,4 @@
 
-
 library(dplyr)
 library(purrr)
 library(tidyr)
@@ -151,7 +150,7 @@ process_basicStats_data <- function(PlayerbasicStatsdata){
    # Check if the Hall_Of_Fame column exists, and add it if it doesn't
   if (!"Hall_Of_Fame" %in% names(PlayerbasicStatsdata)) {
     PlayerbasicStatsdata <- PlayerbasicStatsdata %>%
-      mutate(Hall_Of_Fame = "Not Eligible")
+      mutate(Hall_Of_Fame = "False")
   }
 
   # Only include the specified columns in the returned dataframe
@@ -350,6 +349,20 @@ merge_Active_Retired_Player_Data <- function(retiredPlayerData, activePlayerData
 
   return(merged_data)
 }
+Check_Values_in_basic_dataframe <- function(dataframe) {
+# Iterate over the rows of filtered_BasicStatsPlayerData
+  for(i in 1:nrow(dataframe)) {
+    # If Height or Weight is 0, ask for user input
+    while(dataframe$Height[i] == 0 || dataframe$Weight[i] == 0) {
+      print(paste("Incorrect Height or Weight for Player_Id", dataframe$Player_Id[i]))
+      correct_height <- as.numeric(readline(prompt="Enter the correct Height: "))
+      correct_weight <- as.numeric(readline(prompt="Enter the correct Weight: "))
+      dataframe$Height[i] <- correct_height
+      dataframe$Weight[i] <- correct_weight
+    }
+  }
+  return(dataframe)
+}
 
 merge_dataframes <- function(positional_dataframes) {
   # Use Reduce to iteratively merge all dataframes
@@ -361,35 +374,50 @@ merge_dataframes <- function(positional_dataframes) {
   return(merged_data_positional)
 }
 
+merge_with_basicStats <- function(basicStatsData, otherdataframe) {
+  # Merge the basic stats dataframe with the other dataframe
+  merged_data <- merge(basicStatsData, otherdataframe, by = c("Player_Id"), all = TRUE)
+
+  return(merged_data)
+}
+
+write_df_to_csv <- function(dataframe){
+  dataframe_name <- deparse(substitute(dataframe))
+  file_path1 <- file.path("E:\\R_Code\\NFL Data\\FixedDataCSVfiles\\", paste0(dataframe_name, ".csv"))
+  file_path2 <- file.path("E:\\GitHub Rep\\Retired-NFL-Analysis\\Retired-NFL-Analysis\\", paste0(dataframe_name, ".csv"))
+
+  write.csv(dataframe, file = file_path1, row.names = FALSE)
+  write.csv(dataframe, file = file_path2, row.names = FALSE)
+}
 
 # Data Load
 ## Retired Player Data
 retiredPlayerDefensivedataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Defense_Stats.csv")
-#View(retiredPlayerDefensivedataframe)
+colnames(retiredPlayerDefensivedataframe)
 retiredFumblesdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Fumbles_Stats.csv")
-#View(retiredFumblesdataframe)
+colnames(retiredFumblesdataframe)
 retiredPassingdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Passing_Stats.csv")
-#View(retiredPassingdataframe)
+colnames(retiredPassingdataframe)
 retiredReceivingdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Receiving_Stats.csv")
-#View(retiredReceivingdataframe)
+colnames(retiredReceivingdataframe)
 retiredRushingdataframe <- read.csv("E:\\R_Code\\NFL Data\\RetiredPlayer_Rushing_Stats.csv")
-#View(retiredRushingdataframe)
+colnames(retiredRushingdataframe)
 retiredbasicstat <- read.csv("E:\\R_Code\\NFL Data\\Retired_Player_Basic_Stats (1).csv") 
-View(retiredbasicstat)
+colnames(retiredbasicstat)
 
 ## Active Player Data
 activedefensivedataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Defense_Stats.csv")
-#View(activedefensivedataframe)
+colnames(activedefensivedataframe)
 activeFumblesdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Fumbles_Stats.csv")
-#View(activeFumblesdataframe)
+colnames(activeFumblesdataframe)
 activePassingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Passing_Stats.csv")
-#View(activePassingdataframe)
+colnames(activePassingdataframe)
 activeReceivingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Receiving_Stats.csv")  
-#View(activeReceivingdataframe)
+colnames(activeReceivingdataframe)
 activeRushingdataframe <- read.csv("E:\\R_Code\\NFL Data\\ActivePlayer_Rushing_Stats.csv")
-#View(activeRushingdataframe)
+colnames(activeRushingdataframe)
 activebasicstat <- read.csv("E:\\R_Code\\NFL Data\\Active_Player_Basic_Stats.csv") 
-View(activebasicstat)
+colnames(activebasicstat)
 
 # Data Cleaning
 ### Function Call
@@ -471,7 +499,7 @@ BasicStatsPlayerData <- merge_Active_Retired_Player_Data(retiredPlayerData = ret
 
 
 
-#Note: combine all positional dataframes into one dataframe to be able to merge into basics stats dataframe.
+######### combine all positional dataframes into one dataframe to be able to merge into basics stats dataframe.
 # List of dataframes
 position_dataframes <- list(DefensivePlayerData, FumblesPlayerData, PassingPlayerData, ReceivingPlayerData, RushingPlayerData)
 
@@ -485,31 +513,59 @@ print(length(merged_ids_not_in_basicstats)) #0 so all players in positional data
 filtered_BasicStatsPlayerData <- BasicStatsPlayerData %>%
   filter(Player_Id %in% merged_positional_data$Player_Id)
 
-## fixing empty heights and weights for players in the basic dataframe before the merge to limit potential issues with the merge.
-
-# Iterate over the rows of filtered_BasicStatsPlayerData
-for(i in 1:nrow(filtered_BasicStatsPlayerData)) {
-  # If Height or Weight is 0, ask for user input
-  while(filtered_BasicStatsPlayerData$Height[i] == 0 || filtered_BasicStatsPlayerData$Weight[i] == 0) {
-    print(paste("Incorrect Height or Weight for Player_Id", filtered_BasicStatsPlayerData$Player_Id[i]))
-    correct_height <- as.numeric(readline(prompt="Enter the correct Height: "))
-    correct_weight <- as.numeric(readline(prompt="Enter the correct Weight: "))
-    filtered_BasicStatsPlayerData$Height[i] <- correct_height
-    filtered_BasicStatsPlayerData$Weight[i] <- correct_weight
-  }
-}
+filtered_BasicStatsPlayerData <- Check_Values_in_basic_dataframe(filtered_BasicStatsPlayerData)
 
 # Merge BasicStatsPlayerData with merged_positional_data
-merged_data_all <- merge(filtered_BasicStatsPlayerData, merged_positional_data, by = c("Player_Id"), all = TRUE)
+merged_data_all <- merge_with_basicStats(basicStatsData = filtered_BasicStatsPlayerData, otherdataframe = merged_positional_data)
 View(merged_data_all)
 
-# Write merged_data_all to a CSV file
-write.csv(merged_data_all, file = "merged_data_all.csv", row.names = FALSE)
+write_df_to_csv(merged_data_all)
 
-write.csv(merged_data_all, file = "E:\\R_Code\\NFL Data\\FixedDataCSVfiles\\merged_data_all.csv", row.names = FALSE)
-
+##########################################################################
 ### The data has been cleaned and merged into one dataframe
 
+##########################################################################
+## merge all retired players into one dataframe
+
+retiredPlayersData_list <- list(retiredPlayerDefensivedataFixed, retiredFumblesPlayerFixed, retiredPassingdataFixed, retiredReceivingdataFixed, retiredRushingdataFixed)
+
+retiredPlayersData <- merge_dataframes(positional_dataframes = retiredPlayersData_list)
+
+#check if player_ids from retired not in basic stats
+retired_ids_not_in_basicstats <- setdiff(retiredPlayersData$Player_Id, BasicStatsPlayerData$Player_Id)
+print(length(retired_ids_not_in_basicstats)) #0 so all players in retired dataframes are in basic stats dataframe
+
+# Filter basic stats to the retired players using massive merged basic stats dataframe for completeness
+
+filtered_retiredBasicStatsPlayerData <- BasicStatsPlayerData %>%
+  filter(Player_Id %in% retiredPlayersData$Player_Id)
+
+filtered_filled_retiredBasicStatsPlayerData <- Check_Values_in_basic_dataframe(filtered_retiredBasicStatsPlayerData)
+
+merged_retired_data_all <- merge_with_basicStats(basicStatsData = filtered_filled_retiredBasicStatsPlayerData, otherdataframe = retiredPlayersData)
+View(merged_retired_data_all)
+write_df_to_csv(merged_retired_data_all)
+######################################################################
+## merge all active players into one dataframe
+
+activePlayersData_list <- list(activePlayerDefensivedataFixed, activeFumblesPlayerFixed, activePassingdataFixed, activeReceivingdataFixed, activeRushingdataFixed)
+
+activePlayersData <- merge_dataframes(positional_dataframes = activePlayersData_list)
+
+#check if player_ids from active not in basic stats
+active_ids_not_in_basicstats <- setdiff(activePlayersData$Player_Id, BasicStatsPlayerData$Player_Id)
+print(length(active_ids_not_in_basicstats)) #0 so all players in active dataframes are in basic stats dataframe
+
+# Filter basic stats to the active players using massive merged basic stats dataframe for completeness
+filter_activeBasicStatsPlayerData <- BasicStatsPlayerData %>%
+  filter(Player_Id %in% activePlayersData$Player_Id)
+
+filtered_filled_activeBasicStatsPlayerData <- Check_Values_in_basic_dataframe(filter_activeBasicStatsPlayerData)
+
+merged_active_data_all <- merge_with_basicStats(basicStatsData = filtered_filled_activeBasicStatsPlayerData, otherdataframe = activePlayersData)
+
+View(merged_active_data_all)
+write_df_to_csv(merged_active_data_all)
 
 
 # kicking data seems to have been scraped incorrectly. Many players have 0s for all stats execpt for FG and FG_Attempted or all empty when they should not be empty. 
@@ -520,4 +576,15 @@ write.csv(merged_data_all, file = "E:\\R_Code\\NFL Data\\FixedDataCSVfiles\\merg
     # if ID from kicking is not a K in basic stats then remove from kicking data.
   # however even with this some of the kicker data is not accurate even for the kicker position players.
   # Exclude for now but add later on my own time for experimentation beyond the scope of this project analysis. 
+
+
+
+
+
+
+
+
+
+
+
 
