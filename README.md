@@ -1,5 +1,6 @@
 # Retired-NFL-Analysis
-Analysis on retired NFL player data from 1980 - 2020. Goal is to create a model that can predict a players height based on their career statistics along with other factors
+Analysis on retired NFL player data from 1980 - 2020. Goal is to create a better way to analyze multiple hypothesis using this data.
+This was my first attempt at a repository so alot of this can be improved in future.  
 
 ## Data Cleaning
 ### Basic Statistics Data
