@@ -4,6 +4,8 @@ This was my first attempt at a repository so alot of this can be improved in fut
 
 ## Data Cleaning
 ### Basic Statistics Data
+Data was gathered from Kaggle.com. https://www.kaggle.com/datasets/trevyoungquist/2020-nfl-stats-active-and-retired-players 
+The data consists of basic and career statistics for all players up to 2020 both active and retired. 
 Starting with the basic stat dataset, there are a few rows with missing values written as "--" those are removed
 Then the dataframe was exported to a csv file to be used with data merging later. 
 ### Defensive Statistics Data 
